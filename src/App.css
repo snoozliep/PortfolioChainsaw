@@ -194,8 +194,27 @@
 }
 /* Landing Page Container and Heading Styles */
 .landing-page .container {
-  background-color: rgba(0, 0, 0, 0.175);
+  background: linear-gradient(135deg, #2325262d 0%, #711c1c55 60%, #1a1a1a 100%);
   padding: 5%;
+  border-radius: 24px;
+  box-shadow: 0 0 32px 8px #711c1c, 0 0 64px 16px #ffffff;
+  border: 3px solid #232526;
+  animation: spookyGlow 2.5s infinite alternate;
+}
+
+@keyframes spookyGlow {
+  0% {
+    box-shadow: 0 0 32px 8px #1c712e, 0 0 64px 16px #ffffff;
+    border-color: #232526;
+  }
+  50% {
+    box-shadow: 0 0 48px 16px #ffffff, 0 0 80px 24px #232526;
+    border-color: #ffffff;
+  }
+  100% {
+    box-shadow: 0 0 32px 8px #232526, 0 0 64px 16px #3a1c71;
+    border-color: #3a1c71;
+  }
 }
 .landing-page h1 {
   font-size: 88px;
@@ -216,7 +235,7 @@
 /* Landing Page */
 .landing-page {
   position: relative;
-  height: 60vh;
+  height: 100vh;
   background-image: url('https://images.alphacoders.com/131/thumb-1920-1314266.png');
   background-size: auto;
   background-position: 75% 25%;
@@ -238,6 +257,7 @@ body, html {
   box-sizing: border-box;
   background-color: #000000;
   color: #d6f5e6;
+  cursor: url('http://www.rw-designer.com/cursor-view/178545.png'), auto;
 }
 
 * {
