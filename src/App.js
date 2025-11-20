@@ -203,7 +203,7 @@ function App() {
         </div>
       )}
       <footer className="galaxy-footer">
-        <p>© 2025 Space Galaxy. All rights reserved.</p>
+        <p>© 2025 Arabelle. All rights reserved.</p>
       </footer>
     </div>
   );
