@@ -6,7 +6,8 @@ const folders = [
   { name: 'Designs', color: '#e67cae', icon: '🎨' },
   { name: 'Notes', color: '#f7c873', icon: '📝' },
   { name: 'Resources', color: '#7be6c7', icon: '🔗' },
-  { name: 'Gallery', color: '#ffb347', icon: '🖼️' }
+  { name: 'Gallery', color: '#ffb347', icon: '🖼️' },
+  { name: 'Archive', color: '#b7b7b7', icon: '📚' }
 ];
 
 function FoldersSection() {
