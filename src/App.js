@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import FoldersSection from './FoldersSection';
 
@@ -296,6 +297,7 @@ function App() {
       <footer className="galaxy-footer">
         <p>© 2025 Arabelle. All rights reserved.</p>
       </footer>
+      <Analytics />
     </div>
     </div>
   );
