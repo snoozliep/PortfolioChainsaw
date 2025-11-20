@@ -201,7 +201,7 @@ function App() {
 
         {/* Bento Block 4: Contact Info */}
         <section className="about-bento contact">
-          <h2 className="galaxy-header">Contact</h2>
+          <h2 className="galaxy-header">Contact & Works</h2>
           <div style={{ display: 'flex', flexDirection: 'row', gap: '0px', justifyContent: 'center', alignItems: 'center', marginTop: '8px', width: '100%' }}>
             <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
               <li>
@@ -253,10 +253,16 @@ function App() {
 
         {/* Bento Block 6: Edit Guide */}
         <section className="about-bento extra">
-          <h2 className="galaxy-header">Education</h2>
-          <p>
-            Mapúa University - Bachelor's degree, Mechanical Engineering</p>
-            <br></br>
+          <div className="info-card education-card">
+            <h2 className="galaxy-header">Education</h2>
+            <div className="info-card-title">🎓 Mapúa University</div>
+            <div className="info-card-detail">BS Mechanical Engineering</div>
+          </div>
+          <div className="info-card work-card">
+            <h2 className="galaxy-header">Work</h2>
+            <div className="info-card-title">🛠️ Freelance Web Developer</div>
+            <div className="info-card-detail">Various clients & personal projects</div>
+          </div>
         </section>
       </main>
       {/* Folders Section below bentos */}
