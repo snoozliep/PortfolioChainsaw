@@ -194,28 +194,11 @@
 }
 /* Landing Page Container and Heading Styles */
 .landing-page .container {
-  background: linear-gradient(135deg, #2325262d 0%, #711c1c55 60%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #ffffff2d 0%, #88888855 60%, #1a1a1a 100%);
   padding: 5%;
-  border-radius: 24px;
-  box-shadow: 0 0 32px 8px #711c1c, 0 0 64px 16px #ffffff;
-  border: 3px solid #232526;
-  animation: spookyGlow 2.5s infinite alternate;
+  border-radius: 14px;
 }
 
-@keyframes spookyGlow {
-  0% {
-    box-shadow: 0 0 32px 8px #1c712e, 0 0 64px 16px #ffffff;
-    border-color: #232526;
-  }
-  50% {
-    box-shadow: 0 0 48px 16px #ffffff, 0 0 80px 24px #232526;
-    border-color: #ffffff;
-  }
-  100% {
-    box-shadow: 0 0 32px 8px #232526, 0 0 64px 16px #3a1c71;
-    border-color: #3a1c71;
-  }
-}
 .landing-page h1 {
   font-size: 88px;
   font-weight: bold;
@@ -225,7 +208,6 @@
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.04em;
   text-transform: none;
-  text-shadow: 0 0 12px #000, 0 0 24px #222;
   border-radius: 20px;
   font-style: italic;
 }
