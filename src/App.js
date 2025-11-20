@@ -81,7 +81,18 @@ function App() {
         <div className="container">
           <h1>Arabelle's Portfolio</h1>
           {/* <p>Join our community and receive the care you deserve.</p> */}
-          <a href="#" className="cta-button">Learn More</a>
+          <a
+            href="#about-me"
+            className="cta-button"
+            title="Learn More"
+            style={{fontSize: '2.2rem', display: 'inline-block', textDecoration: 'none'}}
+            onClick={e => {
+              e.preventDefault();
+              document.getElementById('about-me')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <span role="img" aria-label="skull">💀</span>
+          </a>
         </div>
       </section>
       <div className="galaxy-bg">
@@ -90,8 +101,20 @@ function App() {
           <img src="https://www.pngmart.com/files/23/Pochita-PNG.png" alt="Logo" />
         </div>
         <nav className="header-right">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
+          <a
+            href="#home"
+            onClick={e => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >Home</a>
+          <a
+            href="#about-me"
+            onClick={e => {
+              e.preventDefault();
+              document.getElementById('about-me')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >About</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -99,7 +122,7 @@ function App() {
       
       <main className="about-body">
         {/* Bento Block 1: Personal Intro */}
-        <section className="about-bento about-me">
+        <section className="about-bento about-me" id="about-me">
           <h2 className="galaxy-header">About Me</h2>
           <p>
             I am a Mechanical Engineering student, juggling multiple skills and hobbies for me to make a living whilst being creative. Learn more about me from my <a href="https://aziee13.uwu.ai/#blog">carrd.io.</a> To check my certificates, visit my Linkedln!
