@@ -1,3 +1,12 @@
+.landing-dark .landing-page {
+  background-image: none !important;
+}
+.landing-lit .landing-page {
+  background-image: url('https://images.alphacoders.com/131/thumb-1920-1314266.png');
+  background-size: auto;
+  background-position: 75% 25%;
+  background-repeat: repeat;
+}
 
 .prettier-btn.ko-fi {
   background: none;

@@ -38,6 +38,17 @@ function App() {
   const [popupCard, setPopupCard] = useState(null);
   const [isLightMode, setIsLightMode] = useState(false);
   const [showCards, setShowCards] = useState(false);
+  const [lightPos, setLightPos] = useState({ x: -9999, y: -9999 });
+  const [landingLit, setLandingLit] = useState(false);
+  const [skullClicked, setSkullClicked] = useState(false);
+
+  React.useEffect(() => {
+    const handleMouseMove = (e) => {
+      setLightPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const handleCardClick = (card) => {
     setPopupCard(card);
@@ -56,7 +67,26 @@ function App() {
   };
 
   return (
-    <div className={isLightMode ? 'light-mode' : ''}>
+    <div
+      className={isLightMode ? 'light-mode' : ''}
+      style={{ position: 'relative', overflow: 'hidden' }}
+    >
+      {/* Flashlight effect overlay in dark mode, disappears only when skull emoji is clicked */}
+      {!isLightMode && !skullClicked && (
+        <div
+          style={{
+            pointerEvents: 'none',
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 10000,
+            background: `radial-gradient(circle 180px at ${lightPos.x}px ${lightPos.y}px, rgba(0,0,0,0) 0%, rgba(0,0,0,0.92) 100%)`,
+            transition: 'background 0.08s',
+          }}
+        />
+      )}
       <button
         style={{
           position: 'fixed',
@@ -88,7 +118,7 @@ function App() {
             style={{fontSize: '2.2rem', display: 'inline-block', textDecoration: 'none'}}
             onClick={e => {
               e.preventDefault();
-              document.getElementById('about-me')?.scrollIntoView({ behavior: 'smooth' });
+              setSkullClicked(prev => !prev);
             }}
           >
             <span role="img" aria-label="skull">💀</span>
@@ -229,8 +259,6 @@ function App() {
         <p>© 2025 Arabelle. All rights reserved.</p>
       </footer>
     </div>
-  );
-
     </div>
   );
 }
