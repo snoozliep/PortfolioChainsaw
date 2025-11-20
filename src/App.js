@@ -201,33 +201,52 @@ function App() {
         {/* Bento Block 4: Contact Info */}
         <section className="about-bento contact">
           <h2 className="galaxy-header">Contact</h2>
-          <ul className="actions prettier-actions">
-            <li>
-              <a href="https://ko-fi.com/ceyla13" className="button scrolly prettier-btn ko-fi" target="_blank">
-                <span role="img" aria-label="Ko-Fi" style={{marginRight: '8px'}}>☕</span>Ko-Fi
-              </a>
-            </li>
-            <li>
-              <a href="#one" className="button scrolly prettier-btn paypal" target="_blank">
-                <span role="img" aria-label="Paypal" style={{marginRight: '8px'}}>💸</span>Paypal
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank">
-                <span role="img" aria-label="LinkedIn" style={{marginRight: '8px'}}>💼</span>LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="https://open.spotify.com/user/31obpbuz7oxvsrhwn6ijquvmejtq" className="button scrolly prettier-btn spotify" target="_blank">
-                <span role="img" aria-label="Spotify" style={{marginRight: '8px'}}>🎵</span>Spotify
-              </a>
-            </li>
-            <li>
-              <a href="https://aziee13.uwu.ai/" className="button scrolly prettier-btn carrd" target="_blank">
-                <span role="img" aria-label="Carrd.io" style={{marginRight: '8px'}}>🪐</span>Carrd.io
-              </a>
-            </li>
-          </ul>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '0px', justifyContent: 'center', alignItems: 'center', marginTop: '8px', width: '100%' }}>
+            <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
+              <li>
+                <a href="https://ko-fi.com/ceyla13" className="button scrolly prettier-btn ko-fi" target="_blank">
+                  <span role="img" aria-label="Ko-Fi" style={{marginRight: '-5px'}}>☕</span>Ko-Fi
+                </a>
+              </li>
+              <li>
+                <a href="#one" className="button scrolly prettier-btn paypal" target="_blank">
+                  <span role="img" aria-label="Paypal" style={{marginRight: '-5px'}}>💸</span>Paypal
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/user/31obpbuz7oxvsrhwn6ijquvmejtq" className="button scrolly prettier-btn spotify" target="_blank">
+                  <span role="img" aria-label="Spotify" style={{marginRight: '-5px'}}>🎵</span>Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://aziee13.uwu.ai/" className="button scrolly prettier-btn carrd" target="_blank">
+                  <span role="img" aria-label="Carrd.io" style={{marginRight: '-5px'}}>🪐</span>Carrd.io
+                </a>
+              </li>
+            </ul>
+            <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
+              <li>
+                <a href="https://www.behance.net/snoozliep" className="button scrolly prettier-btn" target="_blank">
+                  <span role="img" aria-label="Behance" style={{marginRight: '-5px'}}>🎨</span>Behance
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/snoozliep" className="button scrolly prettier-btn" target="_blank">
+                  <span role="img" aria-label="Github" style={{marginRight: '-5px'}}>🐙</span>Github
+                </a>
+              </li>
+              <li>
+                <a href="https://deserted-dust-7d5.notion.site/Template-1-1515e3ffa0e780e4b4b0c72bb7687537?pvs=4" className="button scrolly prettier-btn" target="_blank">
+                  <span role="img" aria-label="Notion" style={{marginRight: '-5px'}}>🗒️</span>Notion
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank">
+                  <span role="img" aria-label="LinkedIn" style={{marginRight: '-5px'}}>💼</span>LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
         </section>
 
 

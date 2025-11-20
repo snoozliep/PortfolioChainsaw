@@ -676,5 +676,5 @@ body, html {
 .about-bento:hover {
   box-shadow: 0 8px 40px 12px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.3);
   transform: translateY(-8px);
-  outline: solid 1px #ff9e30;
+  outline: solid 1px #ffdc30;
 }
