@@ -7,27 +7,37 @@ const cards = [
     title: 'Nebula Explorer',
     description: 'Discover the mysteries of colorful nebulae.',
     color: 'green',
+    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
+    extra: 'Nebulae are vast clouds of dust and gas in space, often the birthplace of stars.'
   },
   {
     title: 'Blue Star',
     description: 'Learn about the hottest stars in the galaxy.',
     color: 'blue',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    extra: 'Blue stars are the hottest and most luminous, burning at temperatures above 10,000K.'
   },
   {
     title: 'Purple Planet',
     description: 'Visit distant worlds with vibrant hues.',
     color: 'purple',
+    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=400&q=80',
+    extra: 'Some exoplanets have atmospheres that scatter light, giving them a purple appearance.'
   },
   {
     title: 'Pink Comet',
     description: 'Chase comets across the cosmic sky.',
     color: 'pink',
+    image: 'https://images.unsplash.com/photo-1465101178521-c1a4c8a0f0c5?auto=format&fit=crop&w=400&q=80',
+    extra: 'Comets are icy bodies that release gas and dust, creating beautiful tails as they approach the sun.'
   },
 ];
+
 
 function App() {
   const [popupCard, setPopupCard] = useState(null);
   const [isLightMode, setIsLightMode] = useState(false);
+  const [showCards, setShowCards] = useState(false);
 
   const handleCardClick = (card) => {
     setPopupCard(card);
@@ -39,6 +49,10 @@ function App() {
 
   const toggleTheme = () => {
     setIsLightMode((prev) => !prev);
+  };
+
+  const handleShowCards = () => {
+    setShowCards((prev) => !prev);
   };
 
   return (
@@ -72,7 +86,7 @@ function App() {
       </section>
       <div className="galaxy-bg">
         <div className="header-bar">
-        <div className="header-left">
+        <div className="header-left" onClick={handleShowCards} style={{cursor: 'pointer'}}>
           <img src="https://www.pngmart.com/files/23/Pochita-PNG.png" alt="Logo" />
         </div>
         <nav className="header-right">
@@ -88,7 +102,7 @@ function App() {
         <section className="about-bento about-me">
           <h2 className="galaxy-header">About Me</h2>
           <p>
-            Hi, I'm Panget! I love exploring the galaxy, building creative web projects, and sharing cosmic discoveries. My goal is to inspire curiosity and wonder about the universe.
+            I am a Mechanical Engineering student, juggling multiple skills and hobbies for me to make a living whilst being creative. Learn more about me from my <a href="https://aziee13.uwu.ai/#blog">carrd.io.</a> To check my certificates, visit my Linkedln!
           </p>
         </section>
 
@@ -116,35 +130,60 @@ function App() {
         {/* Bento Block 4: Contact Info */}
         <section className="about-bento contact">
           <h2 className="galaxy-header">Contact</h2>
-          <ul>
-            <li>Email: panget@spacegalaxy.com</li>
-            <li>Twitter: @panget_space</li>
-            <li>GitHub: github.com/panget</li>
+          <ul className="actions prettier-actions">
+            <li>
+              <a href="https://ko-fi.com/ceyla13" className="button scrolly prettier-btn ko-fi" target="_blank">
+                <span role="img" aria-label="Ko-Fi" style={{marginRight: '8px'}}>☕</span>Ko-Fi
+              </a>
+            </li>
+            <li>
+              <a href="#one" className="button scrolly prettier-btn paypal" target="_blank">
+                <span role="img" aria-label="Paypal" style={{marginRight: '8px'}}>💸</span>Paypal
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank">
+                <span role="img" aria-label="LinkedIn" style={{marginRight: '8px'}}>💼</span>LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://open.spotify.com/user/31obpbuz7oxvsrhwn6ijquvmejtq" className="button scrolly prettier-btn spotify" target="_blank">
+                <span role="img" aria-label="Spotify" style={{marginRight: '8px'}}>🎵</span>Spotify
+              </a>
+            </li>
+            <li>
+              <a href="https://aziee13.uwu.ai/" className="button scrolly prettier-btn carrd" target="_blank">
+                <span role="img" aria-label="Carrd.io" style={{marginRight: '8px'}}>🪐</span>Carrd.io
+              </a>
+            </li>
           </ul>
         </section>
 
 
         {/* Bento Block 6: Edit Guide */}
         <section className="about-bento extra">
-          <h2 className="galaxy-header">How to Edit</h2>
+          <h2 className="galaxy-header">Education</h2>
           <p>
-            To customize this About Me section, edit the content inside each <code>about-bento</code> block in <b>App.js</b>. Change the titles, text, and lists to fit your story. For layout and colors, update <b>App.css</b> under <code>.about-body</code> and <code>.about-bento</code>. Lalalalla
-          </p>
+            Mapúa University - Bachelor's degree, Mechanical Engineering</p>
+            <br></br>
+						Activities and societies: Mapúa Gaming Society, AcadArena, Mapúa Gaming Concencus, Pambansang Samahan ng Inhenyero Mekanikal, Mapúa University Collegiate Chapter of the SAE International, ARISE MAPÚA, BioLOGIC
         </section>
       </main>
-      <div className="card-grid">
-        {cards.map((card, idx) => (
-          <div
-            key={idx}
-            className={`galaxy-card ${card.color}`}
-            onClick={() => handleCardClick(card)}
-            style={{ cursor: 'pointer' }}
-          >
-            <h2>{card.title}</h2>
-            <p>{card.description}</p>
-          </div>
-        ))}
-      </div>
+      {showCards && (
+        <div className="card-grid">
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className={`galaxy-card ${card.color}`}
+              onClick={() => handleCardClick(card)}
+              style={{ cursor: 'pointer' }}
+            >
+              <h2>{card.title}</h2>
+              <p>{card.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {popupCard && (
         <div className="card-popup-overlay" onClick={closePopup}>
@@ -152,6 +191,14 @@ function App() {
             <button className="card-popup-close" onClick={closePopup}>&times;</button>
             <h2>{popupCard.title}</h2>
             <p>{popupCard.description}</p>
+            {popupCard.image && (
+              <img src={popupCard.image} alt={popupCard.title} style={{maxWidth: '100%', borderRadius: '8px', margin: '18px 0'}} />
+            )}
+            {popupCard.extra && (
+              <div style={{marginTop: '10px', fontSize: '1.08rem', color: '#e0e0ff'}}>
+                {popupCard.extra}
+              </div>
+            )}
           </div>
         </div>
       )}

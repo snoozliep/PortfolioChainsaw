@@ -1,3 +1,62 @@
+
+.prettier-btn.ko-fi {
+  background: none;
+  border-color: #f7b768;
+}
+.prettier-btn.ko-fi:hover {
+  background: linear-gradient(90deg, #e07a5f 0%, #f7b768 100%);
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(212, 175, 55, 0.13);
+  border-color: #e07a5f;
+}
+
+
+.prettier-btn.paypal {
+  background: none;
+  border-color: #009cde;
+}
+.prettier-btn.paypal:hover {
+  background: linear-gradient(90deg, #009cde 0%, #003087 100%);
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(0, 156, 222, 0.13);
+  border-color: #003087;
+}
+
+
+.prettier-btn.linkedin {
+  background: none;
+  border-color: #0077b5;
+}
+.prettier-btn.linkedin:hover {
+  background: linear-gradient(90deg, #00a0dc 0%, #0077b5 100%);
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(0, 119, 181, 0.13);
+  border-color: #00a0dc;
+}
+
+
+.prettier-btn.spotify {
+  background: none;
+  border-color: #1db954;
+}
+.prettier-btn.spotify:hover {
+  background: linear-gradient(90deg, #191414 0%, #1db954 100%);
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(29, 185, 84, 0.13);
+  border-color: #191414;
+}
+
+
+.prettier-btn.carrd {
+  background: none;
+  border-color: #6c63ff;
+}
+.prettier-btn.carrd:hover {
+  background: linear-gradient(90deg, #00c9b7 0%, #6c63ff 100%);
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(108, 99, 255, 0.13);
+  border-color: #00c9b7;
+}
 .light-mode .about-body li,
 .light-mode .about-bento li {
   color: #000;
@@ -540,6 +599,54 @@ body, html {
 .about-bento.extra {
   height: 400px; /* Adjusted to 350px for variation, making it different from the other two (400px) */
   grid-column: span 1;
+}
+
+/* Prettier Contact Actions */
+.prettier-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+  padding-left: 0;
+  margin-left: 32px;
+}
+.prettier-actions li {
+  list-style: none;
+  margin: 0;
+}
+.prettier-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+  padding-left: 0;
+}
+.prettier-actions li {
+  list-style: none;
+  margin: 0;
+}
+
+.prettier-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  color: #f5e9d7;
+  font-weight: 500;
+  border: 1px solid #d4af37;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.07), 0 0 0 1px #232526;
+  letter-spacing: 0.03em;
+  transition: background 0.22s, color 0.22s, transform 0.14s, box-shadow 0.14s;
+}
+.prettier-btn:hover {
+  background: linear-gradient(90deg, #d4af37 0%, #232526 100%);
+  color: #232526;
+  box-shadow: 0 5px 16px rgba(212, 175, 55, 0.13), 0 0 0 1.5px #d4af37;
+  transform: scale(1.06) translateY(-2px);
 }
 
 .about-bento:hover {
