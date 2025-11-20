@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import './App.css';
+import FoldersSection from './FoldersSection';
 
 const cards = [
   {
@@ -66,9 +67,15 @@ function App() {
     setShowCards((prev) => !prev);
   };
 
+  // Use torch cursor in dark mode with flashlight effect
+  const flashlightActive = !isLightMode && !skullClicked;
+  // Torch cursor only when skull is clicked (flashlight mode)
+  const showTorchCursor = !isLightMode && !skullClicked;
   return (
     <div
-      className={isLightMode ? 'light-mode' : ''}
+      className={
+        (isLightMode ? 'light-mode knife-cursor' : (showTorchCursor ? 'flashlight-cursor' : 'knife-cursor'))
+      }
       style={{ position: 'relative', overflow: 'hidden' }}
     >
       {/* Flashlight effect overlay in dark mode, disappears only when skull emoji is clicked */}
@@ -172,11 +179,22 @@ function App() {
 
         {/* Bento Block 3: Projects */}
         <section className="about-bento projects">
-          <h2 className="galaxy-header">Featured Projects</h2>
-          <ul>
-            <li>Galaxy Card App</li>
-            <li>Stargazer Blog</li>
-            <li>Space Quiz Game</li>
+          <h2 className="galaxy-header">Activities and Societies:</h2>
+          <ul style={{
+            listStyle: 'none',
+            display: 'block',
+            margin: '8px 0 0 24px',
+            paddingLeft: '12px',
+            color: '#e0e0ff',
+            fontSize: '0.85rem',
+          }}>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🎮</span>Mapúa Gaming Society</li>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🏆</span>AcadArena</li>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🕹️</span>Mapúa Gaming Concencus</li>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🔧</span>Pambansang Samahan ng Inhenyero Mekanikal</li>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🚗</span>Mapúa University Collegiate Chapter of the SAE International</li>
+            <li style={{display: 'flex', alignItems: 'center', marginBottom: '.18rem', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🤖</span>ARISE MAPÚA</li>
+            <li style={{display: 'flex', alignItems: 'center', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🧬</span>BioLOGIC</li>
           </ul>
         </section>
 
@@ -219,9 +237,10 @@ function App() {
           <p>
             Mapúa University - Bachelor's degree, Mechanical Engineering</p>
             <br></br>
-						Activities and societies: Mapúa Gaming Society, AcadArena, Mapúa Gaming Concencus, Pambansang Samahan ng Inhenyero Mekanikal, Mapúa University Collegiate Chapter of the SAE International, ARISE MAPÚA, BioLOGIC
         </section>
       </main>
+      {/* Folders Section below bentos */}
+      <FoldersSection />
       {showCards && (
         <div className="card-grid">
           {cards.map((card, idx) => (
