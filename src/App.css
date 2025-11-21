@@ -1,26 +1,32 @@
-/* Floating Bubbles Animation */
-.bubble {
+/* Floating Smoke Animation */
+.smoke {
   position: fixed;
   border-radius: 50%;
-  background: rgba(173, 216, 230, 0.45);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background: radial-gradient(ellipse at center, rgba(180,180,180,0.32) 0%, rgba(80,80,80,0.18) 100%);
+  box-shadow: 0 16px 64px 24px rgba(80,80,80,0.32), 0 0 64px 32px rgba(180,180,180,0.22);
   pointer-events: none;
-  animation: floatBubble 12s linear infinite;
+  filter: blur(14px);
+  animation: floatSmoke 14s linear infinite;
   z-index: 999;
+  opacity: 0.92;
 }
 
-@keyframes floatBubble {
+@keyframes floatSmoke {
   0% {
-    transform: translateY(100vh) scale(1);
-    opacity: 0.7;
+    transform: translateY(100vh) scale(1.1) skewX(-2deg);
+    opacity: 0.5;
   }
-  50% {
-    opacity: 1;
-    transform: translateY(40vh) scale(1.1);
+  40% {
+    opacity: 0.7;
+    transform: translateY(40vh) scale(1.18) skewX(2deg);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(20vh) scale(1.22) skewX(-1deg);
   }
   100% {
-    transform: translateY(-10vh) scale(0.9);
-    opacity: 0.6;
+    transform: translateY(-10vh) scale(1.05) skewX(1deg);
+    opacity: 0.4;
   }
 }
 @media (max-width: 700px) {
@@ -392,16 +398,37 @@
 
 
 .landing-page h1 {
-  font-size: 88px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: white;
-  /* animation: pulse 3s ease-in-out infinite; */
-  font-family: Hammersmith system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  border-radius: 20px;
-  font-style: italic;
+font-size: 128px !important;
+font-weight: bold;
+margin-bottom: 4px;
+color: white;
+/* animation: pulse 3s ease-in-out infinite; */
+font-family: 'Playfair Display', 'Crimson Text', cursive, Hammersmith, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+letter-spacing: 0.04em;
+text-transform: none;
+border-radius: 20px;
+font-style: italic;
+line-height: 0;
+}
+
+@media (max-width: 900px) {
+  .landing-page h1 {
+    font-size: 80px !important;
+    padding: 0.2em 0.1em !important;
+  }
+}
+@media (max-width: 700px) {
+  .landing-page h1 {
+    font-size: 48px !important;
+    padding: 0.15em 0.08em !important;
+  }
+}
+@media (max-width: 500px) {
+  .landing-page h1 {
+    font-size: 2rem !important;
+    line-height: 1.1;
+    padding: 0.12em 0.05em !important;
+  }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Playfair+Display:wght@700&display=swap');
@@ -438,13 +465,48 @@ body, html {
   box-sizing: inherit;
 }
 
+/* Custom Scrollbar Styles for Website */
+body, html {
+  scrollbar-width: thin;
+  scrollbar-color: #e63900 #1b2735;
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+  width: 10px;
+  background: #1b2735;
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #e63900 0%, #ff6e6e 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px #e63900;
+}
+body::-webkit-scrollbar-thumb:hover, html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff6e6e 0%, #e63900 100%);
+}
+
+.light-mode body, .light-mode html {
+  scrollbar-color: #e63900 #f7f7fc;
+}
+.light-mode body::-webkit-scrollbar, .light-mode html::-webkit-scrollbar {
+  background: #f7f7fc;
+}
+.light-mode body::-webkit-scrollbar-thumb, .light-mode html::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #e63900 0%, #ff6e6e 100%);
+  box-shadow: 0 0 8px #e63900;
+}
+.light-mode body::-webkit-scrollbar-thumb:hover, .light-mode html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff6e6e 0%, #e63900 100%);
+}
+
 /* Header Bar */
 .header-bar {
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
-  height: 60px;
+  height: 76px;
   background: rgba(251, 251, 251, 0);
   display: flex;
   align-items: center;

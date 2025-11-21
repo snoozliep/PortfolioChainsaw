@@ -183,6 +183,24 @@
   font-family: 'Press Start 2P', 'Courier New', monospace;
   overflow-y: auto;
 }
+@media (max-width: 700px) {
+  .folder-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 70vw !important;
+    min-width: 120px !important;
+    max-width: 220px !important;
+    margin: 0 auto 10px auto !important;
+    height: 120px !important;
+    box-sizing: border-box;
+    padding: 10px 6px !important;
+    text-align: center !important;
+  }
+    font-size: 1rem !important;
+    padding: 0.8rem 0.5rem !important;
+  }
 .folder-popup.retro-popup {
   border: 4px solid #222;
   box-shadow: 0 8px 32px 0 #222;
