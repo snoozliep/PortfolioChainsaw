@@ -233,17 +233,17 @@
 }
 /* Theme: Light Mode */
 .light-mode {
-  background-color: #f5f5fa;
-  color: #000;
+  background-color: #f7f7fc;
+  color: #222;
 }
-.light-mode .about-bento:hover {
-  box-shadow: 0 8px 40px 12px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.3);
-  transform: translateY(-8px);
-  outline: solid 1px #ffffff;
+.light-mode .about-bento {
+  background: #f7f7fc;
+  color: #222 !important;
+  box-shadow: 0 4px 32px 8px rgba(0,0,0,0.06);
 }
 .light-mode .galaxy-bg {
-  background: radial-gradient(ellipse at bottom, #e0e7ff 0%, #f5f5fa 100%);
-  color: #000;
+  background: linear-gradient(135deg, #e3eafc 0%, #f7f7fc 100%);
+  color: #222;
 }
 .light-mode .header-bar {
   background: rgba(255, 255, 255, 0.255);
@@ -274,9 +274,9 @@
   text-shadow: none;
 }
 .light-mode .about-bento {
-  background: #f5f5fa;
-  color: #000 !important;
-  box-shadow: 0 4px 32px 8px rgba(0,0,0,0.08);
+  background: #f7f7fc;
+  color: #222 !important;
+  box-shadow: 0 4px 32px 8px rgba(0,0,0,0.06);
 }
 .light-mode .about-bento h1,
 .light-mode .about-bento h2,
