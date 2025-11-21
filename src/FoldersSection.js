@@ -13,16 +13,21 @@ const folders = [
 function FoldersSection() {
   return (
     <section className="folders-section">
-      <h2 className="folders-title">Folders</h2>
       <div className="folders-grid">
         {folders.map((folder, idx) => (
-          <div
-            key={idx}
-            className="folder-card"
-            style={{ background: folder.color }}
-          >
-            <span className="folder-icon" style={{ fontSize: '2.5rem' }}>{folder.icon}</span>
-            <div className="folder-name">{folder.name}</div>
+          <div className="folder-wrapper" key={idx}>
+            <div className="folder-bg" />
+            <div
+              className="folder-card"
+              style={{ background: folder.color }}
+            >
+              {/* Four bolts/circles in corners */}
+              <div className="folder-bolt tl" />
+              <div className="folder-bolt tr" />
+              <div className="folder-bolt bl" />
+              <div className="folder-bolt br" />
+              <div className="folder-name font-orbitron">{folder.name}</div>
+            </div>
           </div>
         ))}
       </div>

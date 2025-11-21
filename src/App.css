@@ -1,3 +1,28 @@
+/* Floating Bubbles Animation */
+.bubble {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(173, 216, 230, 0.45);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  pointer-events: none;
+  animation: floatBubble 12s linear infinite;
+  z-index: 999;
+}
+
+@keyframes floatBubble {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(40vh) scale(1.1);
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.9);
+    opacity: 0.6;
+  }
+}
 @media (max-width: 700px) {
   .folders-section {
     display: block !important;
@@ -250,8 +275,21 @@
 }
 .light-mode .about-bento {
   background: #f5f5fa;
-  color: #000;
+  color: #000 !important;
   box-shadow: 0 4px 32px 8px rgba(0,0,0,0.08);
+}
+.light-mode .about-bento h1,
+.light-mode .about-bento h2,
+.light-mode .about-bento h3,
+.light-mode .about-bento h4,
+.light-mode .about-bento h5,
+.light-mode .about-bento h6,
+.light-mode .about-bento p,
+.light-mode .about-bento li,
+.light-mode .about-bento span,
+.light-mode .about-bento a,
+.light-mode .about-bento div {
+  color: #000 !important;
 }
 .light-mode .about-bento h2 {
   color: #000;
@@ -295,6 +333,24 @@
   animation: popupEnlarge 0.3s ease;
   box-shadow: 0 8px 48px 0 rgba(57, 255, 20, 0.18), 0 0 0 2px #fff;
   overflow-y: auto; /* Allows scrolling if content exceeds height */
+  /* Custom scrollbar for galaxy theme */
+  scrollbar-width: thin;
+  scrollbar-color: #a259ff #1b2735;
+}
+
+/* Chrome, Edge, Safari */
+.card-popup::-webkit-scrollbar {
+  width: 8px;
+  background: #1b2735;
+  border-radius: 8px;
+}
+.card-popup::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a259ff 0%, #00eaff 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px #a259ff;
+}
+.card-popup::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #39ff14 0%, #a259ff 100%);
 }
 .card-popup.green {
   box-shadow: 0 8px 48px 0 rgba(57, 255, 20, 0.7), 0 0 0 2px #39ff14;
@@ -371,7 +427,7 @@ body, html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif !important;
   box-sizing: border-box;
   background-color: #000000;
   color: #d6f5e6;

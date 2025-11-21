@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import './App.css';
+import './Bubble.css';
 import FoldersSection from './FoldersSection';
 
 // Sound effect for skull click
@@ -82,12 +83,72 @@ const cards = [
 
 
 function App() {
+    // Bubble state for pop effect
+    const [bubbles, setBubbles] = useState(
+      Array.from({ length: 12 }).map((_, i) => ({
+        id: i,
+        popped: false,
+        popping: false,
+        size: Math.random() * 48 + 32,
+        left: Math.random() * 100,
+        delay: Math.random() * 10,
+        opacity: Math.random() * 0.4 + 0.5, // 0.5 to 0.9
+        blur: Math.random() * 2.5, // 0 to 2.5px
+        speed: Math.random() * 8 + 10, // 10s to 18s
+          color1: `rgba(255,255,255,${Math.random()*0.18+0.22})`,
+          color2: `rgba(255,255,255,${Math.random()*0.12+0.10})`,
+      }))
+    );
+
+    // Handle bubble click: grow then pop
+    const handleBubbleClick = (id) => {
+      setBubbles((prev) =>
+        prev.map((b) =>
+          b.id === id
+            ? { ...b, popping: true }
+            : b
+        )
+      );
+      setTimeout(() => {
+        setBubbles((prev) =>
+          prev.map((b) =>
+            b.id === id
+              ? { ...b, popped: true, popping: false }
+              : b
+          )
+        );
+      }, 400);
+    };
+
+    // Render bubbles
+    const bubbleElements = bubbles.map((bubble) =>
+      !bubble.popped ? (
+        <div
+          key={bubble.id}
+          className={`bubble${bubble.popping ? ' bubble-pop' : ''}`}
+          style={{
+            width: `${bubble.size}px`,
+            height: `${bubble.size}px`,
+            left: `${bubble.left}vw`,
+            animationDelay: `${bubble.delay}s`,
+            animationDuration: `${bubble.speed}s`,
+            zIndex: 10,
+            opacity: bubble.opacity,
+            filter: `blur(${bubble.blur}px)`,
+            background: `radial-gradient(circle at 60% 40%, ${bubble.color1} 60%, ${bubble.color2} 100%)`,
+            boxShadow: `0 0 32px 8px ${bubble.color1}`,
+            border: '1.5px solid rgba(255,255,255,0.25)',
+          }}
+          onClick={() => handleBubbleClick(bubble.id)}
+        />
+      ) : null
+    );
   const [popupCard, setPopupCard] = useState(null);
-  const [isLightMode, setIsLightMode] = useState(false);
+    const [isLightMode, setIsLightMode] = useState(false);
   const [showCards, setShowCards] = useState(false);
   const [lightPos, setLightPos] = useState({ x: -9999, y: -9999 });
   const [landingLit, setLandingLit] = useState(false);
-  const [skullClicked, setSkullClicked] = useState(false);
+    const [skullClicked, setSkullClicked] = useState(true);
 
   React.useEffect(() => {
     const handleMouseMove = (e) => {
@@ -118,12 +179,15 @@ function App() {
   // Torch cursor only when skull is clicked (flashlight mode)
   const showTorchCursor = !isLightMode && !skullClicked;
   return (
-    <div
-      className={
-        (isLightMode ? 'light-mode knife-cursor' : (showTorchCursor ? 'flashlight-cursor' : 'knife-cursor'))
-      }
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
+    <>
+      {/* Floating bubbles */}
+      <div className="bubble-container">{bubbleElements}</div>
+      <div
+        className={
+          (isLightMode ? 'light-mode knife-cursor' : (showTorchCursor ? 'flashlight-cursor' : 'knife-cursor'))
+        }
+        style={{ position: 'relative', overflow: 'hidden' }}
+      >
       {/* Flashlight effect overlay in dark mode, disappears only when skull emoji is clicked */}
       {!isLightMode && !skullClicked && (
         <div
@@ -276,23 +340,23 @@ function App() {
             </ul>
             <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
               <li>
-                <a href="https://www.behance.net/snoozliep" className="button scrolly prettier-btn" target="_blank">
-                  <span role="img" aria-label="Behance" style={{marginRight: '-5px'}}>🎨</span>Behance
+                <a href="https://www.behance.net/snoozliep" className="button scrolly prettier-btn carrd" target="_blank">
+                  Behance
                 </a>
               </li>
               <li>
-                <a href="https://github.com/snoozliep" className="button scrolly prettier-btn" target="_blank">
-                  <span role="img" aria-label="Github" style={{marginRight: '-5px'}}>🐙</span>Github
+                <a href="https://github.com/snoozliep" className="button scrolly prettier-btn paypal" target="_blank">
+                  Github
                 </a>
               </li>
               <li>
-                <a href="https://deserted-dust-7d5.notion.site/Template-1-1515e3ffa0e780e4b4b0c72bb7687537?pvs=4" className="button scrolly prettier-btn" target="_blank">
-                  <span role="img" aria-label="Notion" style={{marginRight: '-5px'}}>🗒️</span>Notion
+                <a href="https://deserted-dust-7d5.notion.site/Template-1-1515e3ffa0e780e4b4b0c72bb7687537?pvs=4" className="button scrolly prettier-btn ko-fi" target="_blank">
+                  Notion
                 </a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank">
-                  <span role="img" aria-label="LinkedIn" style={{marginRight: '-5px'}}>💼</span>LinkedIn
+                  LinkedIn
                 </a>
               </li>
             </ul>
@@ -353,10 +417,9 @@ function App() {
         <p>© 2025 Arabelle. All rights reserved.</p>
       </footer>
       <Analytics />
-    </div>
-    </div>
+      </div>
+      </div>
+    </>
   );
 }
-
 export default App;
-
