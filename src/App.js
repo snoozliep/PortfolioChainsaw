@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import './Bubble.css';
 import FoldersSection from './FoldersSection';
+import BookSection from './BookSection';
 
 // Sound effect for skull click
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
@@ -294,6 +295,7 @@ function App() {
             </section>
           </main>
           <FoldersSection />
+          <BookSection />
           {showCards && (
             <div className="card-grid">
               {cards.map((card, idx) => (
