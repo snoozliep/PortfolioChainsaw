@@ -104,10 +104,8 @@ function FoldersSection() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', alignItems: 'center', margin: '24px 0' }}>
                   {/* Timeline Entry 1 */}
                   <div className="timeline-entry">
-                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative', overflow: 'hidden' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/mathworks.gif')}>
-                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative', overflow: 'hidden' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/mathworks.gif')}>
-                      <img src={process.env.PUBLIC_URL + '/mathworks.gif'} alt="Mathworks" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '6px', boxShadow: 'none', background: 'transparent' }} />
-                    </div>
+                    <div className="timeline-image" style={{ cursor: 'pointer', width: '120px', height: '120px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/matlab.jpg')}>
+                      <img src={process.env.PUBLIC_URL + '/matlab.jpg'} alt="Mathworks" style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '16px', boxShadow: 'none', background: 'transparent' }} />
                     </div>
                     <div className="timeline-info">
                       <div className="timeline-year">2022 | Mathworks</div>
@@ -117,7 +115,9 @@ function FoldersSection() {
                   </div>
                   {/* Timeline Entry 2 */}
                   <div className="timeline-entry">
-                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }}></div>
+                    <div className="timeline-image" style={{ cursor: 'pointer', width: '120px', height: '120px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/firebase.png')}>
+                      <img src={process.env.PUBLIC_URL + '/firebase.png'} alt="Firebase" style={{ width: '120px', height: '120px', objectFit: 'contain', borderRadius: '16px', boxShadow: 'none', background: 'transparent' }} />
+                    </div>
                     <div className="timeline-info">
                       <div className="timeline-year">2025 | Thesis </div>
                       <div className="timeline-title">IoT First Aid Kit</div>
@@ -126,7 +126,7 @@ function FoldersSection() {
                   </div>
                       {viewImage && (
                         <div className="folder-popup-overlay" onClick={closeImageView}>
-                          <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', maxWidth: '600px', width: '90vw', textAlign: 'center', boxShadow: '0 8px 32px #222', position: 'relative' }} onClick={e => e.stopPropagation()}>
+                          <div style={{ background: 'transparent', borderRadius: '12px', padding: '24px', maxWidth: '600px', width: '90vw', textAlign: 'center', boxShadow: 'none', position: 'relative' }} onClick={e => e.stopPropagation()}>
                             <img src={viewImage} alt="Project" style={{ maxWidth: '100%', maxHeight: '60vh', borderRadius: '8px', marginBottom: '12px' }} />
                             <div style={{ color: '#222', fontSize: '1.08rem' }}>Click outside to close</div>
                           </div>

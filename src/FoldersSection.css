@@ -11,7 +11,7 @@
   opacity: 1;
   max-width: 480px;
   max-height: 480px;
-  box-shadow: 0 12px 48px #222;
+  box-shadow: none;
   border-radius: 18px;
 }
 @media (max-width: 700px) {
