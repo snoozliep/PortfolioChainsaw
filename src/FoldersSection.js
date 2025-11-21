@@ -16,11 +16,14 @@ function FoldersSection() {
   const [note, setNote] = useState("");
   const [notesList, setNotesList] = useState([]);
   const [viewImage, setViewImage] = useState(null);
+  const [viewImageFolder, setViewImageFolder] = useState(null);
   const handleImageClick = (imgSrc) => {
     setViewImage(imgSrc);
+    setViewImageFolder(popupFolder?.name);
   };
   const closeImageView = () => {
     setViewImage(null);
+    setViewImageFolder(null);
   };
   const handleFolderClick = (folder) => {
     setPopupFolder(folder);
@@ -67,6 +70,13 @@ function FoldersSection() {
           <div className="folder-popup retro-popup" style={{ background: popupFolder.color }} onClick={e => e.stopPropagation()}>
             {/* Removed folder icon emoji */}
             <h2 className="folder-popup-title font-orbitron">{popupFolder.name}</h2>
+            {viewImage && viewImageFolder === popupFolder.name && (
+              <div className="folder-popup-overlay" onClick={closeImageView}>
+                <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', maxWidth: '600px', width: '90vw', textAlign: 'center', boxShadow: '0 8px 32px #222', position: 'relative' }} onClick={e => e.stopPropagation()}>
+                  <img src={viewImage} alt="Project" style={{ maxWidth: '100%', maxHeight: '60vh', borderRadius: '8px', marginBottom: '12px' }} />
+                </div>
+              </div>
+            )}
             {popupFolder.name === 'Notes' ? (
               <div className="folder-popup-desc">
                 <form onSubmit={handleNoteSubmit} style={{ marginBottom: '1.2rem' }}>
@@ -94,20 +104,24 @@ function FoldersSection() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', alignItems: 'center', margin: '24px 0' }}>
                   {/* Timeline Entry 1 */}
                   <div className="timeline-entry">
-                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }} onClick={() => handleImageClick('https://via.placeholder.com/480x360?text=Project+Image+1')}>Image</div>
+                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative', overflow: 'hidden' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/mathworks.gif')}>
+                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative', overflow: 'hidden' }} onClick={() => handleImageClick(process.env.PUBLIC_URL + '/mathworks.gif')}>
+                      <img src={process.env.PUBLIC_URL + '/mathworks.gif'} alt="Mathworks" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '6px', boxShadow: 'none', background: 'transparent' }} />
+                    </div>
+                    </div>
                     <div className="timeline-info">
-                      <div className="timeline-year">2022</div>
-                      <div className="timeline-title">Project Title 1</div>
-                      <div className="timeline-about">About this project: Add a description here for your project milestone or achievement.</div>
+                      <div className="timeline-year">2022 | Mathworks</div>
+                      <div className="timeline-title">Weather and Date App</div>
+                      <div className="timeline-about">About this project: Shows weather for date placed, as well as count how many days it passed or will it be until said date.</div>
                     </div>
                   </div>
                   {/* Timeline Entry 2 */}
                   <div className="timeline-entry">
-                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }} onClick={() => handleImageClick('https://via.placeholder.com/480x360?text=Project+Image+2')}>Image</div>
+                    <div className="timeline-image" style={{ cursor: 'pointer', aspectRatio: '4/3', width: '120px', height: '90px', background: 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.1rem', fontWeight: 'bold', border: '1.5px solid #e0e0e0', position: 'relative' }}></div>
                     <div className="timeline-info">
-                      <div className="timeline-year">2023</div>
-                      <div className="timeline-title">Project Title 2</div>
-                      <div className="timeline-about">About this project: Add a description here for your project milestone or achievement.</div>
+                      <div className="timeline-year">2025 | Thesis </div>
+                      <div className="timeline-title">IoT First Aid Kit</div>
+                      <div className="timeline-about">Interet of Things, Rapid Manufacturing using 3D Printers, and Modelled using Fusion360. First Aid Kit that dispenses pills on tap of RFID using Firebase as Databae,</div>
                     </div>
                   </div>
                       {viewImage && (
@@ -124,9 +138,51 @@ function FoldersSection() {
             ) : popupFolder.name === 'Designs' || popupFolder.name === 'Gallery' ? (
               <div className="folder-popup-desc">
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', alignItems: 'center', minHeight: '180px', padding: '24px' }}>
-                  <div style={{ width: '120px', height: '120px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.2rem', fontWeight: 'bold', border: '2px dashed #e67cae' }}>Image 1</div>
-                  <div style={{ width: '120px', height: '120px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.2rem', fontWeight: 'bold', border: '2px dashed #e67cae' }}>Image 2</div>
-                  <div style={{ width: '120px', height: '120px', background: '#e0e0e0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: '1.2rem', fontWeight: 'bold', border: '2px dashed #e67cae' }}>Image 3</div>
+                                    <div className="gallery-img-hover-wrapper">
+                                      <img
+                                        src={process.env.PUBLIC_URL + '/github.png'}
+                                        alt="Github"
+                                        className="gallery-img-thumb"
+                                        style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/github.png')}
+                                      />
+                                      <img
+                                        src={process.env.PUBLIC_URL + '/github.png'}
+                                        alt="Github Full"
+                                        className="gallery-img-full"
+                                        style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                                      />
+                                    </div>
+                                    <div className="gallery-img-hover-wrapper">
+                                      <img
+                                        src={process.env.PUBLIC_URL + '/website.png'}
+                                        alt="Website"
+                                        className="gallery-img-thumb"
+                                        style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/website.png')}
+                                      />
+                                      <img
+                                        src={process.env.PUBLIC_URL + '/website.png'}
+                                        alt="Website Full"
+                                        className="gallery-img-full"
+                                        style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                                      />
+                                    </div>
+                                  <div className="gallery-img-hover-wrapper">
+                                    <img
+                                      src={process.env.PUBLIC_URL + '/electronics.png'}
+                                      alt="Electronics"
+                                      className="gallery-img-thumb"
+                                      style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                                      onClick={() => handleImageClick(process.env.PUBLIC_URL + '/electronics.png')}
+                                    />
+                                    <img
+                                      src={process.env.PUBLIC_URL + '/electronics.png'}
+                                      alt="Electronics Full"
+                                      className="gallery-img-full"
+                                      style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                                    />
+                                  </div>
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '18px', color: '#888', fontSize: '1rem' }}>[Gallery placeholder: Add your images here]</div>
               </div>

@@ -297,18 +297,19 @@ function App() {
           <FoldersSection />
           {/* <BookSection /> */}
           {showCards && (
-            <div className="card-grid">
-              {cards.map((card, idx) => (
-                <div
-                  key={idx}
-                  className={`galaxy-card ${card.color}`}
-                  onClick={() => handleCardClick(card)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <h2>{card.title}</h2>
-                  <p>{card.description}</p>
-                </div>
-              ))}
+            <div className="card-grid gallery-grid">
+              <div className="gallery-card">
+                <img src={process.env.PUBLIC_URL + '/github.png'} alt="Github" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
+                <h2>Github</h2>
+              </div>
+              <div className="gallery-card">
+                <img src={process.env.PUBLIC_URL + '/website.png'} alt="Website" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
+                <h2>Website</h2>
+              </div>
+              <div className="gallery-card">
+                <img src={process.env.PUBLIC_URL + '/electronics.png'} alt="Electronics" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
+                <h2>Electronics</h2>
+              </div>
             </div>
           )}
           {popupCard && (

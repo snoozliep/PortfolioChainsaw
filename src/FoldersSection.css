@@ -1,3 +1,19 @@
+.gallery-img-hover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.gallery-img-hover-wrapper:hover .gallery-img-full {
+  display: block !important;
+}
+.gallery-img-full {
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  opacity: 1;
+  max-width: 480px;
+  max-height: 480px;
+  box-shadow: 0 12px 48px #222;
+  border-radius: 18px;
+}
 @media (max-width: 700px) {
   .folders-grid {
     display: flex !important;
@@ -319,7 +335,7 @@
 .folder-popup-desc .timeline-image {
   width: 80px;
   height: 80px;
-  background: #f5f5fa;
+    background: none !important;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -327,7 +343,7 @@
   color: #bbb;
   font-size: 1.1rem;
   font-weight: bold;
-  border: 1.5px solid #e0e0e0;
+  border: 1.5px solid #e0e0e0 !important;
   box-shadow: none;
   position: relative;
   margin-right: 0;
