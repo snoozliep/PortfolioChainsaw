@@ -1,3 +1,47 @@
+@media (max-width: 700px) {
+  .info-card,
+  .education-card,
+  .work-card {
+    max-width: 95vw;
+    min-width: 0;
+    padding: 2vw 3vw;
+    font-size: 0.98rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-bento.extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+}
+.education-card,
+.work-card {
+  margin-top: 0;
+  min-height: 120px;
+  padding: 2px 6px;
+  max-width: 340px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 700px) {
+  .info-card,
+  .education-card,
+  .work-card {
+    max-width: 95vw;
+    min-width: 0;
+    padding: 2vw 3vw;
+    font-size: 0.98rem;
+  }
+  .info-card-title {
+    font-size: 1rem;
+  }
+  .info-card-detail {
+    font-size: 0.92rem;
+  }
+}
 /* Info Card Styles for Education & Work */
 .info-card {
   background: rgba(40, 40, 80, 0.18);
