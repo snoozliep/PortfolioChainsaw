@@ -4,6 +4,9 @@ import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import FoldersSection from './FoldersSection';
 
+// Sound effect for skull click
+const skullSound = typeof window !== 'undefined' ? new window.Audio('skull.ogg') : null;
+
 const cards = [
   {
     title: 'Nebula Explorer',
@@ -169,6 +172,10 @@ function App() {
             onClick={e => {
               e.preventDefault();
               setSkullClicked(prev => !prev);
+              if (skullSound) {
+                skullSound.currentTime = 0;
+                skullSound.play();
+              }
             }}
           >
             <span role="img" aria-label="skull">💀</span>
