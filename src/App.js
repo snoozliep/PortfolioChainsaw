@@ -295,7 +295,7 @@ function App() {
             </section>
           </main>
           <FoldersSection />
-          <BookSection />
+          {/* <BookSection /> */}
           {showCards && (
             <div className="card-grid">
               {cards.map((card, idx) => (
