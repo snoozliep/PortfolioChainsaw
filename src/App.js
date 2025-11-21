@@ -9,29 +9,71 @@ const cards = [
     title: 'Nebula Explorer',
     description: 'Discover the mysteries of colorful nebulae.',
     color: 'green',
-    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
+    image: './3d.png',
     extra: 'Nebulae are vast clouds of dust and gas in space, often the birthplace of stars.'
   },
   {
     title: 'Blue Star',
     description: 'Learn about the hottest stars in the galaxy.',
     color: 'blue',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    image: 'electronics.png',
     extra: 'Blue stars are the hottest and most luminous, burning at temperatures above 10,000K.'
   },
   {
     title: 'Purple Planet',
     description: 'Visit distant worlds with vibrant hues.',
     color: 'purple',
-    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=400&q=80',
+    image: 'website.png',
     extra: 'Some exoplanets have atmospheres that scatter light, giving them a purple appearance.'
   },
   {
     title: 'Pink Comet',
     description: 'Chase comets across the cosmic sky.',
     color: 'pink',
-    image: 'https://images.unsplash.com/photo-1465101178521-c1a4c8a0f0c5?auto=format&fit=crop&w=400&q=80',
+    image: 'graphics.png',
     extra: 'Comets are icy bodies that release gas and dust, creating beautiful tails as they approach the sun.'
+  },
+  {
+    title: 'Golden Asteroid',
+    description: 'Uncover the secrets of rare golden asteroids.',
+    color: 'yellow',
+    image: 'asteroid.png',
+    extra: 'Golden asteroids are rich in metals and could be the key to future space mining.'
+  },
+  {
+    title: 'Red Dwarf',
+    description: 'Explore the universe of small but mighty red dwarf stars.',
+    color: 'green',
+    image: 'reddwarf.png',
+    extra: 'Red dwarfs are the most common type of star in the Milky Way.'
+  },
+  {
+    title: 'Cosmic Whale',
+    description: 'Dive into the beauty of the cosmic whale nebula.',
+    color: 'blue',
+    image: 'whale.png',
+    extra: 'The Whale Nebula is a stunning interstellar cloud shaped like a whale.'
+  },
+  {
+    title: 'Meteor Shower',
+    description: 'Witness the dazzling display of meteor showers.',
+    color: 'purple',
+    image: 'meteor.png',
+    extra: 'Meteor showers occur when Earth passes through the debris of a comet.'
+  },
+  {
+    title: 'Solar Flare',
+    description: 'Feel the power of solar flares from our sun.',
+    color: 'pink',
+    image: 'solarflare.png',
+    extra: 'Solar flares are sudden flashes of increased brightness on the sun.'
+  },
+  {
+    title: 'Galactic Butterfly',
+    description: 'Admire the symmetry of the galactic butterfly nebula.',
+    color: 'yellow',
+    image: 'butterfly.png',
+    extra: 'The Butterfly Nebula is a planetary nebula with a beautiful winged shape.'
   },
 ];
 
