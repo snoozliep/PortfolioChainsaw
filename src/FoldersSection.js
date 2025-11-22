@@ -133,7 +133,7 @@ function FoldersSection() {
                         </div>
                       )}
                 </div>
-                <div style={{ textAlign: 'center', marginTop: '18px', color: '#888', fontSize: '1rem' }}>[Timeline placeholder: Add your projects, images, years, and details here]</div>
+                {/* Placeholder removed */}
               </div>
             ) : popupFolder.name === 'Designs' || popupFolder.name === 'Gallery' ? (
               <div className="folder-popup-desc">
@@ -184,7 +184,7 @@ function FoldersSection() {
                                     />
                                   </div>
                 </div>
-                <div style={{ textAlign: 'center', marginTop: '18px', color: '#888', fontSize: '1rem' }}>[Gallery placeholder: Add your images here]</div>
+                {/* Placeholder removed */}
               </div>
             ) : (
               <div className="folder-popup-desc">This is the {popupFolder.name} folder. Add your retro game info or details here!</div>
