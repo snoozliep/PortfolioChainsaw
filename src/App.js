@@ -80,6 +80,8 @@ function App() {
   const [skullClicked, setSkullClicked] = useState(false);
   const [showCards, setShowCards] = useState(false);
   const [popupCard, setPopupCard] = useState(null);
+  const [showAllCardsPopup, setShowAllCardsPopup] = useState(false);
+  const [popupFolder, setPopupFolder] = useState(null);
   const [lightPos, setLightPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -91,7 +93,13 @@ function App() {
   }, []);
 
   const toggleTheme = () => setIsLightMode(lm => !lm);
-  const handleShowCards = () => setShowCards(sc => !sc);
+  // When logo is clicked, open Projects folder popup
+  // When logo is clicked, open the first galaxy card as a popup
+  // When logo is clicked, open the 5th galaxy card as a popup
+  // When logo is clicked, show all galaxy cards as a popup
+  const handleLogoClick = () => {
+    setShowAllCardsPopup(show => !show);
+  };
   const handleCardClick = card => setPopupCard(card);
   const closePopup = () => setPopupCard(null);
 
@@ -176,7 +184,7 @@ function App() {
         </section>
         <div className="galaxy-bg">
           <div className="header-bar">
-            <div className="header-left" onClick={handleShowCards} style={{cursor: 'pointer'}}>
+            <div className="header-left" onClick={handleLogoClick} style={{cursor: 'pointer'}}>
               <img src="https://www.pngmart.com/files/23/Pochita-PNG.png" alt="Logo" />
             </div>
             <nav className="header-right">
@@ -294,24 +302,22 @@ function App() {
               </div>
             </section>
           </main>
-          <FoldersSection />
+          <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
           {/* <BookSection /> */}
-          {showCards && (
-            <div className="card-grid gallery-grid">
-              <div className="gallery-card">
-                <img src={process.env.PUBLIC_URL + '/github.png'} alt="Github" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
-                <h2>Github</h2>
-              </div>
-              <div className="gallery-card">
-                <img src={process.env.PUBLIC_URL + '/website.png'} alt="Website" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
-                <h2>Website</h2>
-              </div>
-              <div className="gallery-card">
-                <img src={process.env.PUBLIC_URL + '/electronics.png'} alt="Electronics" style={{width: '100%', borderRadius: '12px', marginBottom: '12px'}} />
-                <h2>Electronics</h2>
-              </div>
+          {/* Show galaxy cards at lower left when logo is clicked */}
+          {showAllCardsPopup && (
+            <div className="card-grid">
+              {cards.map((card, idx) => (
+                <div key={idx} className={`galaxy-card ${card.color}`} style={{cursor: 'pointer'}} onClick={() => setPopupCard(card)}>
+                  {/* No image here, only title and description */}
+                  <h2 style={{fontSize: '1.1rem', color: '#fff', marginBottom: '8px'}}>{card.title}</h2>
+                  <p style={{fontSize: '0.98rem', color: '#e0e0ff', marginBottom: '8px'}}>{card.description}</p>
+                </div>
+              ))}
             </div>
           )}
+
+          {/* Popup for galaxy card details and image */}
           {popupCard && (
             <div className="card-popup-overlay" onClick={closePopup}>
               <div className={`card-popup ${popupCard.color}`} onClick={e => e.stopPropagation()}>

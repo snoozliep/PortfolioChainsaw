@@ -12,7 +12,10 @@ const folders = [
 ];
 
 function FoldersSection() {
-  const [popupFolder, setPopupFolder] = useState(null);
+  // Use popupFolder and setPopupFolder from props if provided
+  const props = arguments[0] || {};
+  const popupFolder = props.popupFolder !== undefined ? props.popupFolder : null;
+  const setPopupFolder = props.setPopupFolder !== undefined ? props.setPopupFolder : () => {};
   const [note, setNote] = useState("");
   const [notesList, setNotesList] = useState([]);
   const [viewImage, setViewImage] = useState(null);
