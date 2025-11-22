@@ -143,15 +143,15 @@ function FoldersSection() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', alignItems: 'center', minHeight: '180px', padding: '24px' }}>
                                     <div className="gallery-img-hover-wrapper">
                                       <img
-                                        src={process.env.PUBLIC_URL + '/github.png'}
+                                        src={process.env.PUBLIC_URL + '/GTHB.png'}
                                         alt="Github"
                                         className="gallery-img-thumb"
                                         style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
-                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/github.png')}
+                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/GTHB.png')}
                                       />
                                       <img
-                                        src={process.env.PUBLIC_URL + '/github.png'}
-                                        alt="Github Full"
+                                        src={process.env.PUBLIC_URL + '/GTHB.png'}
+                                        alt="GTHB Full"
                                         className="gallery-img-full"
                                         style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
                                       />
