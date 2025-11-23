@@ -210,8 +210,9 @@ function App() {
           <main className="about-body">
             <section className="about-bento about-me" id="about-me">
               <h2 className="galaxy-header">About Me</h2>
-              <p>
+              <p style={{ fontSize: '0.92rem', lineHeight: '1.7' }}>
                 I am a Mechanical Engineering student, juggling multiple skills and hobbies for me to make a living whilst being creative. Learn more about me from my <a href="https://azie13.carrd.co/">carrd.io.</a> To check my certificates, visit my Linkedln!
+                My hobbies include gaming, music, art, and web development. I love exploring new technologies as well as creating unique digital experiences.
               </p>
             </section>
             <section className="about-bento skills">
