@@ -109,7 +109,9 @@ function App() {
       <div className="bubble-container">{bubbleElements}</div>
       <div
         className={
-          (isLightMode ? 'light-mode knife-cursor' : (showTorchCursor ? 'flashlight-cursor' : 'knife-cursor'))
+          isLightMode
+            ? 'light-mode knife-cursor'
+            : (skullClicked ? 'flashlight-cursor' : 'knife-cursor')
         }
         style={{ position: 'relative', overflow: 'hidden' }}
       >
