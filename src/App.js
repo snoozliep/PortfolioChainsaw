@@ -211,7 +211,7 @@ function App() {
             <section className="about-bento about-me" id="about-me">
               <h2 className="galaxy-header">About Me</h2>
               <p>
-                I am a Mechanical Engineering student, juggling multiple skills and hobbies for me to make a living whilst being creative. Learn more about me from my <a href="https://aziee13.uwu.ai/#blog">carrd.io.</a> To check my certificates, visit my Linkedln!
+                I am a Mechanical Engineering student, juggling multiple skills and hobbies for me to make a living whilst being creative. Learn more about me from my <a href="https://azie13.carrd.co/">carrd.io.</a> To check my certificates, visit my Linkedln!
               </p>
             </section>
             <section className="about-bento skills">
@@ -262,7 +262,7 @@ function App() {
                     </a>
                   </li>
                   <li>
-                    <a href="https://aziee13.uwu.ai/" className="button scrolly prettier-btn carrd" target="_blank">
+                    <a href="https://azie13.carrd.co//" className="button scrolly prettier-btn carrd" target="_blank">
                       <span role="img" aria-label="Carrd.io" style={{marginRight: '-5px'}}>🪐</span>Carrd.io
                     </a>
                   </li>
