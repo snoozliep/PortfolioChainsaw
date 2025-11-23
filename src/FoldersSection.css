@@ -1,3 +1,20 @@
+/* Archive image hover effect to match gallery */
+.archive-img-hover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.archive-img-hover-wrapper:hover .archive-img-full {
+  display: block !important;
+}
+.archive-img-full {
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  opacity: 1;
+  max-width: 480px;
+  max-height: 480px;
+  box-shadow: none;
+  border-radius: 18px;
+}
 .gallery-img-hover-wrapper {
   position: relative;
   display: inline-block;

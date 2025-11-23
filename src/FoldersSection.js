@@ -136,59 +136,187 @@ function FoldersSection() {
                         </div>
                       )}
                 </div>
-                {/* Placeholder removed */}
-              </div>
-            ) : popupFolder.name === 'Designs' || popupFolder.name === 'Gallery' ? (
-              <div className="folder-popup-desc">
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', alignItems: 'center', minHeight: '180px', padding: '24px' }}>
-                                    <div className="gallery-img-hover-wrapper">
-                                      <img
-                                        src={process.env.PUBLIC_URL + '/GTHB.png'}
-                                        alt="Github"
-                                        className="gallery-img-thumb"
-                                        style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
-                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/GTHB.png')}
-                                      />
-                                      <img
-                                        src={process.env.PUBLIC_URL + '/GTHB.png'}
-                                        alt="GTHB Full"
-                                        className="gallery-img-full"
-                                        style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
-                                      />
-                                    </div>
-                                    <div className="gallery-img-hover-wrapper">
-                                      <img
-                                        src={process.env.PUBLIC_URL + '/website.png'}
-                                        alt="Website"
-                                        className="gallery-img-thumb"
-                                        style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
-                                        onClick={() => handleImageClick(process.env.PUBLIC_URL + '/website.png')}
-                                      />
-                                      <img
-                                        src={process.env.PUBLIC_URL + '/website.png'}
-                                        alt="Website Full"
-                                        className="gallery-img-full"
-                                        style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
-                                      />
-                                    </div>
-                                  <div className="gallery-img-hover-wrapper">
-                                    <img
-                                      src={process.env.PUBLIC_URL + '/electronics.png'}
-                                      alt="Electronics"
-                                      className="gallery-img-thumb"
-                                      style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
-                                      onClick={() => handleImageClick(process.env.PUBLIC_URL + '/electronics.png')}
-                                    />
-                                    <img
-                                      src={process.env.PUBLIC_URL + '/electronics.png'}
-                                      alt="Electronics Full"
-                                      className="gallery-img-full"
-                                      style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
-                                    />
-                                  </div>
+                  </div>
+                ) : popupFolder.name === 'Designs' || popupFolder.name === 'Gallery' ? (
+                  <div className="folder-popup-desc">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', alignItems: 'center', minHeight: '180px', padding: '24px' }}>
+                    <div className="gallery-img-hover-wrapper">
+                    <img
+                      src={process.env.PUBLIC_URL + '/GTHB.png'}
+                      alt="Github"
+                      className="gallery-img-thumb"
+                      style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                      onClick={() => handleImageClick(process.env.PUBLIC_URL + '/GTHB.png')}
+                    />
+                    <img
+                      src={process.env.PUBLIC_URL + '/GTHB.png'}
+                      alt="GTHB Full"
+                      className="gallery-img-full"
+                      style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                    />
+                    </div>
+                    <div className="gallery-img-hover-wrapper">
+                    <img
+                      src={process.env.PUBLIC_URL + '/website.png'}
+                      alt="Website"
+                      className="gallery-img-thumb"
+                      style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                      onClick={() => handleImageClick(process.env.PUBLIC_URL + '/website.png')}
+                    />
+                    <img
+                      src={process.env.PUBLIC_URL + '/website.png'}
+                      alt="Website Full"
+                      className="gallery-img-full"
+                      style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                    />
+                    </div>
+                    <div className="gallery-img-hover-wrapper">
+                    <img
+                      src={process.env.PUBLIC_URL + '/electronics.png'}
+                      alt="Electronics"
+                      className="gallery-img-thumb"
+                      style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #e67cae', cursor: 'pointer' }}
+                      onClick={() => handleImageClick(process.env.PUBLIC_URL + '/electronics.png')}
+                    />
+                    <img
+                      src={process.env.PUBLIC_URL + '/electronics.png'}
+                      alt="Electronics Full"
+                      className="gallery-img-full"
+                      style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '320px', maxHeight: '320px', borderRadius: '12px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                    />
+                    </div>
+                  </div>
+                  </div>
+                ) : popupFolder.name === 'Archive' ? (
+                  <div className="folder-popup-desc">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center', alignItems: 'center', minHeight: '180px', padding: '24px' }}>
+                    <a href="https://snoozliep.github.io/PomodoroTimer/index.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/tomato.png'}
+                          alt="Pomodoro Timer"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer', background: '#eee' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/tomato.png'}
+                          alt="Pomodoro Timer Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '400px', maxHeight: '400px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Pomodoro Timer</div>
+                      </div>
+                    </a>
+                    {/* Turbo Granny */}
+                    <a href="https://snoozliep.github.io/Turbo-Granny/index.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/turbo.png'}
+                          alt="Turbo Granny"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/turbo.png'}
+                          alt="Turbo Granny Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Turbo Granny</div>
+                      </div>
+                    </a>
+                    {/* Tic Tac Toe */}
+                    <a href="https://snoozliep.github.io/tic-tac-toe/tic-tac-toe.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/tictac.png'}
+                          alt="Tic Tac Toe"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/tictac.png'}
+                          alt="Tic Tac Toe Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Tic Tac Toe</div>
+                      </div>
+                    </a>
+                    {/* Guessing Game */}
+                    <a href="https://snoozliep.github.io/guessing-game/guess.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/guess.png'}
+                          alt="Guessing Game"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/guess.png'}
+                          alt="Guessing Game Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Guessing Game</div>
+                      </div>
+                    </a>
+                    {/* Fortune Cookie */}
+                    <a href="https://snoozliep.github.io/fortune-cookie/cookie.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/fortune.png'}
+                          alt="Fortune Cookie"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/fortune.png'}
+                          alt="Fortune Cookie Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Fortune Cookie</div>
+                      </div>
+                    </a>
+                    {/* Popup Demo */}
+                    <a href="https://snoozliep.github.io/practise/popup/popup.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/popup.png'}
+                          alt="Popup Demo"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/popup.png'}
+                          alt="Popup Demo Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Popup Demo</div>
+                      </div>
+                    </a>
+                    {/* Astro Parallax */}
+                    <a href="https://snoozliep.github.io/practise/practise/formats/websites/parallax/parallax.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <div className="archive-img-hover-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + '/astrto.png'}
+                          alt="Astro Parallax"
+                          className="archive-img-thumb archive-hover"
+                          style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '2px dashed #b7b7b7', cursor: 'pointer' }}
+                        />
+                        <img
+                          src={process.env.PUBLIC_URL + '/astrto.png'}
+                          alt="Astro Parallax Full"
+                          className="archive-img-full"
+                          style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', zIndex: 10, maxWidth: '240px', maxHeight: '240px', borderRadius: '18px', boxShadow: '0 8px 32px #222', display: 'none' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#222', fontWeight: 'bold', marginTop: '8px' }}>Astro Parallax</div>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-                {/* Placeholder removed */}
-              </div>
             ) : (
               <div className="folder-popup-desc">This is the {popupFolder.name} folder. Add your retro game info or details here!</div>
             )}
