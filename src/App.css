@@ -344,6 +344,37 @@
   scrollbar-color: #a259ff #1b2735;
 }
 
+/* Global scrollbar */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(162, 89, 255, 0.9) rgba(18, 20, 26, 0.92);
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(18, 20, 26, 0.88);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(162, 89, 255, 0.9), rgba(0, 234, 255, 0.9));
+  border-radius: 999px;
+  border: 3px solid rgba(18, 20, 26, 0.88);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(57, 255, 20, 0.95), rgba(162, 89, 255, 0.95));
+}
+
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* Chrome, Edge, Safari */
 .card-popup::-webkit-scrollbar {
   width: 8px;
@@ -398,17 +429,17 @@
 
 
 .landing-page h1 {
-  font-size: 128px !important;
-  font-weight: bold;
-  margin-bottom: 4px;
-  color: white;
-  /* animation: pulse 3s ease-in-out infinite; */
-  font-family: 'Playfair Display', 'Crimson Text', cursive, Hammersmith, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  border-radius: 20px;
-  font-style: italic;
-  line-height: 1.05;
+font-size: 128px !important;
+font-weight: bold;
+margin-bottom: 4px;
+color: white;
+/* animation: pulse 3s ease-in-out infinite; */
+font-family: 'Playfair Display', 'Crimson Text', cursive, Hammersmith, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+letter-spacing: 0.04em;
+text-transform: none;
+border-radius: 20px;
+font-style: italic;
+line-height: 0;
 }
 
 @media (max-width: 900px) {
@@ -449,34 +480,6 @@
   text-align: center;
   color: #fff;
 }
-.landing-page--curtain {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.landing-page--curtain .container {
-  text-align: center;
-}
-.landing-page__hint {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  animation: landing-hint-pulse 1.8s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes landing-hint-pulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.85; }
-}
 /* Global Resets and Base Styles */
 body, html {
   margin: 0;
@@ -496,36 +499,52 @@ body, html {
 /* Custom Scrollbar Styles for Website */
 body, html {
   scrollbar-width: thin;
-  scrollbar-color: #e63900 #1b2735;
+  scrollbar-color: #bfa57a #14161a;
 }
 
-/* Chrome, Edge, Safari */
 body::-webkit-scrollbar, html::-webkit-scrollbar {
   width: 10px;
-  background: #1b2735;
-  border-radius: 8px;
+  background: rgba(20, 22, 26, 0.96);
 }
+
+body::-webkit-scrollbar-track, html::-webkit-scrollbar-track {
+  background: rgba(20, 22, 26, 0.96);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 body::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #e63900 0%, #ff6e6e 100%);
-  border-radius: 8px;
-  box-shadow: 0 0 8px #e63900;
+  background: linear-gradient(180deg, rgba(191, 165, 122, 0.95), rgba(255, 233, 170, 0.95));
+  border-radius: 999px;
+  border: 2px solid rgba(20, 22, 26, 0.96);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
+
 body::-webkit-scrollbar-thumb:hover, html::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #ff6e6e 0%, #e63900 100%);
+  background: linear-gradient(180deg, rgba(255, 221, 142, 0.98), rgba(215, 180, 117, 0.98));
+}
+
+body::-webkit-scrollbar-corner, html::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .light-mode body, .light-mode html {
-  scrollbar-color: #e63900 #f7f7fc;
+  scrollbar-color: #7b5e3b #f6f4ee;
 }
 .light-mode body::-webkit-scrollbar, .light-mode html::-webkit-scrollbar {
-  background: #f7f7fc;
+  background: #f6f4ee;
+}
+.light-mode body::-webkit-scrollbar-track, .light-mode html::-webkit-scrollbar-track {
+  background: #f6f4ee;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 .light-mode body::-webkit-scrollbar-thumb, .light-mode html::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #e63900 0%, #ff6e6e 100%);
-  box-shadow: 0 0 8px #e63900;
+  background: linear-gradient(180deg, #b78e55, #f1d3a4);
+  border: 2px solid #f6f4ee;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 .light-mode body::-webkit-scrollbar-thumb:hover, .light-mode html::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #ff6e6e 0%, #e63900 100%);
+  background: linear-gradient(180deg, #d9b573, #f8e8c3);
 }
 
 /* Header Bar */
