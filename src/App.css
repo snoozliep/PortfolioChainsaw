@@ -398,17 +398,17 @@
 
 
 .landing-page h1 {
-font-size: 128px !important;
-font-weight: bold;
-margin-bottom: 4px;
-color: white;
-/* animation: pulse 3s ease-in-out infinite; */
-font-family: 'Playfair Display', 'Crimson Text', cursive, Hammersmith, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-letter-spacing: 0.04em;
-text-transform: none;
-border-radius: 20px;
-font-style: italic;
-line-height: 0;
+  font-size: 128px !important;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: white;
+  /* animation: pulse 3s ease-in-out infinite; */
+  font-family: 'Playfair Display', 'Crimson Text', cursive, Hammersmith, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  border-radius: 20px;
+  font-style: italic;
+  line-height: 1.05;
 }
 
 @media (max-width: 900px) {
@@ -448,6 +448,34 @@ line-height: 0;
   align-items: center;
   text-align: center;
   color: #fff;
+}
+.landing-page--curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing-page--curtain .container {
+  text-align: center;
+}
+.landing-page__hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  animation: landing-hint-pulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes landing-hint-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
 }
 /* Global Resets and Base Styles */
 body, html {

@@ -5,8 +5,18 @@ import './Bubble.css';
 import FoldersSection from './FoldersSection';
 import BookSection from './BookSection';
 
+import { 
+Curtain, ProgressBar, 
+NavSection, HeroSection, 
+Hero, Statement, 
+Releases, Numbers, Artists, 
+Studio, Tour, Footer, initNocturne
+ } from './components/Parallax';
+
+
 // Sound effect for skull click
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
+
 
 const cards = [
   {
@@ -104,6 +114,7 @@ function App() {
   const closePopup = () => setPopupCard(null);
 
   return (
+    
     <>
       {/* Floating bubbles */}
       <div className="bubble-container">{bubbleElements}</div>
@@ -177,15 +188,18 @@ function App() {
             {isLightMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
           </button>
         </div>
-        <section className="landing-page">
+        
+        {/* <section className="landing-page">
           <div className="container">
             <h1>Arabelle</h1>
             <h1>Arabelle</h1>
             <h1>Arabelle</h1>
           </div>
-        </section>
-        <div className="galaxy-bg">
-          <div className="header-bar">
+        </section> */}
+
+        <Curtain />
+
+        <div className="header-bar">
             <div className="header-left" onClick={handleLogoClick} style={{cursor: 'pointer'}}>
               <img src="https://www.pngmart.com/files/23/Pochita-PNG.png" alt="Logo" />
             </div>
@@ -207,7 +221,11 @@ function App() {
               <a href="#contact">Contact</a>
             </nav>
           </div>
-          <main className="about-body">
+          
+          <Hero />
+          {/* <ReleasesSection /> */}
+
+          <main className="about-body" id="about-me1">
             <section className="about-bento about-me" id="about-me">
               <h2 className="galaxy-header">About Me</h2>
               <p style={{ fontSize: '0.92rem', lineHeight: '1.7' }}>
@@ -243,6 +261,7 @@ function App() {
                 <li style={{display: 'flex', alignItems: 'center', background: 'transparent', color: '#fff', padding: '0.08rem 0.18rem', borderRadius: '12px', fontWeight: 500, fontSize: '0.85rem', boxShadow: 'none', letterSpacing: '0.05em'}}><span style={{marginRight: '6px', fontSize: '1.1em'}}>🧬</span>BioLOGIC</li>
               </ul>
             </section>
+
             <section className="about-bento contact">
               <h2 className="galaxy-header">Contact & Works</h2>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0px', justifyContent: 'center', alignItems: 'center', marginTop: '8px', width: '100%' }}>
@@ -292,6 +311,7 @@ function App() {
                 </ul>
               </div>
             </section>
+            
             <section className="about-bento extra">
               <div className="info-card education-card">
                 <h2 className="galaxy-header">Education</h2>
@@ -305,8 +325,9 @@ function App() {
               </div>
             </section>
           </main>
+
           <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
-          {/* <BookSection /> */}
+          
           {/* Show galaxy cards at lower left when logo is clicked */}
           {showAllCardsPopup && (
             <div className="card-grid">
@@ -319,6 +340,7 @@ function App() {
               ))}
             </div>
           )}
+
 
           {/* Popup for galaxy card details and image */}
           {popupCard && (
@@ -338,12 +360,13 @@ function App() {
               </div>
             </div>
           )}
+
+          
           <footer className="galaxy-footer">
             <p>© 2025 Arabelle. All rights reserved.</p>
           </footer>
           <Analytics />
         </div>
-      </div>
     </>
   );
 }
