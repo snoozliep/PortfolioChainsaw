@@ -65,9 +65,9 @@ export const Curtain = () => (
 
 export const NavBar = () => (
   <nav className="nav" id="nav">
-    <a href="#" className="nav__mark">
+    <button type="button" className="nav__mark">
       NOCT<span>URNE</span>
-    </a>
+    </button>
     <div className="nav__links">
       {navLinks.map((link) => (
         <a key={link.href} href={link.href}>
@@ -75,9 +75,9 @@ export const NavBar = () => (
         </a>
       ))}
     </div>
-    <a href="#" className="nav__cta">
+    <button type="button" className="nav__cta">
       Listen
-    </a>
+    </button>
     <button className="nav__burger" aria-label="Menu">
       &#9776;
     </button>

@@ -44,9 +44,6 @@ function FoldersSection() {
       setNote("");
     }
   };
-  const handleDeleteNote = (idx) => {
-    setNotesList(notesList.filter((_, i) => i !== idx));
-  };
   return (
     <section className="folders-section">
       <div className="folders-grid">

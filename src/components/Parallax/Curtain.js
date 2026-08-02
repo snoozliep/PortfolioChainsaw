@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const ensureGsap = () => {}; // no-op if you're not using the shared useScrollFx helper
-
 /**
  * mode="auto"  -> opens automatically once the page finishes loading
  * mode="click" -> stays closed, opens on the first click anywhere on it

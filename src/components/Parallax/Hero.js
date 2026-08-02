@@ -18,7 +18,6 @@ export default function Hero({
   secondaryCta = { href: '#about-me1', label: 'Inside the studio' },
 }) {
   const turntableRef = useRef(null);
-  const audioRef = useRef(null);
   const defaultMusicUrl = 'https://www.youtube.com/watch?v=MYPVQccHhAQ&list=RDMYPVQccHhAQ&start_radio=1&t=6277s';
 
   const getYouTubeEmbed = (url) => {
@@ -57,8 +56,6 @@ export default function Hero({
       setEmbedUrl(getYouTubeEmbed(defaultMusicUrl));
     }
   };
-
-  const isMusicPlaying = Boolean(embedUrl);
 
   const handleHeroLink = (href) => (event) => {
     event.preventDefault();

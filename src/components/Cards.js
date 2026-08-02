@@ -24,7 +24,7 @@ function Cards() {
             <span className="tour-row__date">{tour.date}</span>
             <span className="tour-row__city">{tour.city}</span>
             <span className="tour-row__venue">{tour.venue}</span>
-            <a href="#" className="tour-row__link">Tickets →</a>
+            <button type="button" className="tour-row__link">Tickets →</button>
           </div>
         ))}
       </div>
