@@ -311,7 +311,6 @@ function App() {
             </section>
           </main>
 
-          <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
           
           {/* Show galaxy cards at lower left when logo is clicked */}
           {showAllCardsPopup && (
@@ -345,6 +344,7 @@ function App() {
               </div>
             </div>
           )}
+          <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
 
           
           <footer className="galaxy-footer">
