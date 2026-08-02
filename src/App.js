@@ -3,16 +3,8 @@ import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import './Bubble.css';
 import FoldersSection from './FoldersSection';
-import BookSection from './BookSection';
 
-import { 
-Curtain, ProgressBar, 
-NavSection, HeroSection, 
-Hero, Statement, 
-Releases, Numbers, Artists, 
-Studio, Tour, Footer, initNocturne
- } from './components/Parallax';
-
+import { Curtain, Hero } from './components/Parallax';
 
 // Sound effect for skull click
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
@@ -58,7 +50,7 @@ const cards = [
 
 function App() {
   // Bubble state for floating around (random horizontal drift)
-  const [bubbles, setBubbles] = useState(
+  const [bubbles] = useState(
     Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       size: Math.random() * 50 + 20, // 20-70px
@@ -86,9 +78,7 @@ function App() {
   ));
 
   const [isLightMode, setIsLightMode] = useState(false); // dark mode default
-  const [showTorchCursor, setShowTorchCursor] = useState(true); // flashlight ON by default
   const [skullClicked, setSkullClicked] = useState(false);
-  const [showCards, setShowCards] = useState(false);
   const [popupCard, setPopupCard] = useState(null);
   const [showAllCardsPopup, setShowAllCardsPopup] = useState(false);
   const [popupFolder, setPopupFolder] = useState(null);
@@ -103,14 +93,9 @@ function App() {
   }, []);
 
   const toggleTheme = () => setIsLightMode(lm => !lm);
-  // When logo is clicked, open Projects folder popup
-  // When logo is clicked, open the first galaxy card as a popup
-  // When logo is clicked, open the 5th galaxy card as a popup
-  // When logo is clicked, show all galaxy cards as a popup
   const handleLogoClick = () => {
     setShowAllCardsPopup(show => !show);
   };
-  const handleCardClick = card => setPopupCard(card);
   const closePopup = () => setPopupCard(null);
 
   return (
@@ -267,44 +252,44 @@ function App() {
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0px', justifyContent: 'center', alignItems: 'center', marginTop: '8px', width: '100%' }}>
                 <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
                   <li>
-                    <a href="https://ko-fi.com/ceyla13" className="button scrolly prettier-btn ko-fi" target="_blank">
+                    <a href="https://ko-fi.com/ceyla13" className="button scrolly prettier-btn ko-fi" target="_blank" rel="noreferrer">
                       <span role="img" aria-label="Ko-Fi" style={{marginRight: '-5px'}}>☕</span>Ko-Fi
                     </a>
                   </li>
                   <li>
-                    <a href="#one" className="button scrolly prettier-btn paypal" target="_blank">
+                    <a href="#one" className="button scrolly prettier-btn paypal" target="_blank" rel="noreferrer">
                       <span role="img" aria-label="Paypal" style={{marginRight: '-5px'}}>💸</span>Paypal
                     </a>
                   </li>
                   <li>
-                    <a href="https://open.spotify.com/user/31obpbuz7oxvsrhwn6ijquvmejtq" className="button scrolly prettier-btn spotify" target="_blank">
+                    <a href="https://open.spotify.com/user/31obpbuz7oxvsrhwn6ijquvmejtq" className="button scrolly prettier-btn spotify" target="_blank" rel="noreferrer">
                       <span role="img" aria-label="Spotify" style={{marginRight: '-5px'}}>🎵</span>Spotify
                     </a>
                   </li>
                   <li>
-                    <a href="https://azie13.carrd.co//" className="button scrolly prettier-btn carrd" target="_blank">
+                    <a href="https://azie13.carrd.co//" className="button scrolly prettier-btn carrd" target="_blank" rel="noreferrer">
                       <span role="img" aria-label="Carrd.io" style={{marginRight: '-5px'}}>🪐</span>Carrd.io
                     </a>
                   </li>
                 </ul>
                 <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
                   <li>
-                    <a href="https://www.behance.net/snoozliep" className="button scrolly prettier-btn carrd" target="_blank">
+                    <a href="https://www.behance.net/snoozliep" className="button scrolly prettier-btn carrd" target="_blank" rel="noreferrer">
                       Behance
                     </a>
                   </li>
                   <li>
-                    <a href="https://github.com/snoozliep" className="button scrolly prettier-btn paypal" target="_blank">
+                    <a href="https://github.com/snoozliep" className="button scrolly prettier-btn paypal" target="_blank" rel="noreferrer">
                       Github
                     </a>
                   </li>
                   <li>
-                    <a href="https://deserted-dust-7d5.notion.site/Template-1-1515e3ffa0e780e4b4b0c72bb7687537?pvs=4" className="button scrolly prettier-btn ko-fi" target="_blank">
+                    <a href="https://deserted-dust-7d5.notion.site/Template-1-1515e3ffa0e780e4b4b0c72bb7687537?pvs=4" className="button scrolly prettier-btn ko-fi" target="_blank" rel="noreferrer">
                       Notion
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank">
+                    <a href="https://www.linkedin.com/in/arabelle-l-406911222/" className="button scrolly prettier-btn linkedin" target="_blank" rel="noreferrer">
                       LinkedIn
                     </a>
                   </li>
