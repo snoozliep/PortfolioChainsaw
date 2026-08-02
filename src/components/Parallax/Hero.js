@@ -20,62 +20,6 @@ export default function Hero({
   const turntableRef = useRef(null);
   const audioRef = useRef(null);
   const defaultMusicUrl = 'https://www.youtube.com/watch?v=MYPVQccHhAQ&list=RDMYPVQccHhAQ&start_radio=1&t=6277s';
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [showMusicPopup, setShowMusicPopup] = useState(false);
-  const [musicUrl, setMusicUrl] = useState(defaultMusicUrl);
-  const [musicError, setMusicError] = useState(null);
-
-  useEffect(() => {
-    const initialEmbed = getYouTubeEmbed(defaultMusicUrl);
-    if (initialEmbed) {
-      setEmbedUrl(initialEmbed);
-    }
-  }, []);
-
-  const openMusicPopup = () => {
-    setShowMusicPopup(true);
-    setMusicError(null);
-  };
-
-  const closeMusicPopup = () => {
-    setShowMusicPopup(false);
-  };
-
-  const handleMusicPlay = (event) => {
-    event.preventDefault();
-    setMusicError(null);
-
-    const url = musicUrl.trim();
-    if (!url) {
-      setMusicError('Paste a valid audio or YouTube URL.');
-      return;
-    }
-
-    const youtubeEmbed = getYouTubeEmbed(url);
-    if (youtubeEmbed) {
-      stopMusic();
-      setEmbedUrl(youtubeEmbed);
-      setShowMusicPopup(false);
-      return;
-    }
-
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-
-    const audio = new Audio(url);
-    audio.volume = 0.85;
-    audio.play().catch(() => {
-      setMusicError('Unable to play this link. Use a direct audio URL or YouTube URL.');
-    });
-
-    audioRef.current = audio;
-    setEmbedUrl(null);
-    setShowMusicPopup(false);
-  };
-
-  const [embedUrl, setEmbedUrl] = useState(null);
 
   const getYouTubeEmbed = (url) => {
     try {
@@ -99,23 +43,22 @@ export default function Hero({
       }
 
       if (!videoId) return null;
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&controls=1&rel=0`;
     } catch (error) {
       return null;
     }
   };
 
-  const stopMusic = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-    setEmbedUrl(null);
-  };
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [embedUrl, setEmbedUrl] = useState(null);
 
   const playTurntableMusic = () => {
-    openMusicPopup();
+    if (!embedUrl) {
+      setEmbedUrl(getYouTubeEmbed(defaultMusicUrl));
+    }
   };
+
+  const isMusicPlaying = Boolean(embedUrl);
 
   const handleHeroLink = (href) => (event) => {
     event.preventDefault();
@@ -193,33 +136,12 @@ export default function Hero({
         </div>
       </div>
       <div className={"hero-transition-overlay" + (isTransitioning ? ' active' : '')} />
-      {showMusicPopup && (
-        <div className="music-popup-overlay" onClick={closeMusicPopup}>
-          <div className="music-popup" onClick={(e) => e.stopPropagation()}>
-            <button className="music-popup-close" onClick={closeMusicPopup}>&times;</button>
-            <h2>Paste music link</h2>
-            <form onSubmit={handleMusicPlay}>
-              <input
-                type="text"
-                value={musicUrl}
-                onChange={(e) => setMusicUrl(e.target.value)}
-                placeholder="https://example.com/song.mp3 or YouTube URL"
-              />
-              {musicError && <p className="music-popup-error">{musicError}</p>}
-              <div className="music-popup-actions">
-                <button type="submit" className="btn btn--solid">Play</button>
-                <button type="button" className="btn btn--ghost" onClick={stopMusic}>Stop</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
       {embedUrl && (
         <div className="music-embed-fixed">
           <iframe
             src={embedUrl}
             title="YouTube music player"
-            allow="autoplay; encrypted-media"
+            allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
           />
         </div>
