@@ -18,7 +18,7 @@ export default function Hero({
   secondaryCta = { href: '#about-me1', label: 'ABOUT ME' },
 }) {
   const turntableRef = useRef(null);
-  const defaultMusicUrl = 'https://www.youtube.com/watch?v=MYPVQccHhAQ&list=RDMYPVQccHhAQ&start_radio=1&t=6277s';
+  const defaultMusicUrl = 'https://www.youtube.com/watch?v=ux3QETpLcPs&list=RDux3QETpLcPs&start_radio=1';
 
   const getYouTubeEmbed = (url) => {
     try {
@@ -50,10 +50,19 @@ export default function Hero({
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [embedUrl, setEmbedUrl] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const playTurntableMusic = () => {
-    if (!embedUrl) {
-      setEmbedUrl(getYouTubeEmbed(defaultMusicUrl));
+  const toggleMusic = (newUrl = null) => {
+    if (newUrl) {
+      setEmbedUrl(getYouTubeEmbed(newUrl));
+      setIsPlaying(true);
+    } else {
+      if (!embedUrl) {
+        setEmbedUrl(getYouTubeEmbed(defaultMusicUrl));
+        setIsPlaying(true);
+      } else {
+        setIsPlaying(!isPlaying);
+      }
     }
   };
 
@@ -102,7 +111,7 @@ export default function Hero({
       ref={ref}
       style={{
         position: 'relative',
-        backgroundColor: '#2d3030', // Deep Teal Background
+        backgroundColor: '#2d3030',
         backgroundImage: `
           radial-gradient(circle at 100% 40%, #0e0d0d 0%, #0e0d0d 75%, #6e0d00 110%),
           repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px, transparent 2px, transparent 4px),
@@ -117,7 +126,6 @@ export default function Hero({
         alignItems: 'center',
       }}
     >
-      {/* Top Banner Japanese Block Header (Crimson Red Title Box) */}
       <div
         style={{
           position: 'absolute',
@@ -136,16 +144,11 @@ export default function Hero({
       >
         <div
           style={{
-            // backgroundColor: '#6e0009',
             color: '#faf7f7',
             fontSize: 'clamp(2rem, 6vw, 4.2rem)',
             fontWeight: '900',
             fontFamily: '"Impact", "Arial Black", sans-serif',
             letterSpacing: '8px',
-            // padding: '8px 24px 32px 24px',
-            // borderBottomLeftRadius: '4px',
-            // borderBottomRightRadius: '4px',
-            // boxShadow: '0px 8px 24px rgba(0,0,0,0.6)',
             lineHeight: '1',
             userSelect: 'none',
             margin: '100px 120px 350px 20px',
@@ -154,7 +157,6 @@ export default function Hero({
           チェンソーマン
         </div>
 
-        {/* Right English Side Spine Text */}
         <div
           style={{
             writingMode: 'vertical-rl',
@@ -172,7 +174,6 @@ export default function Hero({
         </div>
       </div>
 
-      {/* Vertical Japanese Katakana Accent Overlay (Right Side) */}
       <div
         style={{
           position: 'absolute',
@@ -190,7 +191,6 @@ export default function Hero({
           userSelect: 'none',
           pointerEvents: 'none',
           zIndex: 2,
-          // textShadow: '3px 3px 0px #faf7f7, 6px 6px 0px #000000',
         }}
       >
         バディ・ストーリーズ
@@ -199,7 +199,6 @@ export default function Hero({
       <div className="hero__glow" data-speed="0.25" />
       <div className="hero__grain" />
 
-      {/* Main Grid Content */}
       <div
         className="hero__grid"
         style={{
@@ -215,16 +214,13 @@ export default function Hero({
         }}
       >
         <div>
-          {/* Author Credits Block Badge */}
           <div
             style={{
               display: 'inline-flex',
               flexDirection: 'column',
               backgroundColor: 'rgba(13, 36, 36, 0.85)',
-              // borderLeft: '4px solid #eb6438',
               padding: '10px 16px',
               marginBottom: '24px',
-              // boxShadow: '4px 4px 0px #d91424',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -232,14 +228,8 @@ export default function Hero({
               <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: '900', letterSpacing: '1px' }}>藤本タツキ</span>
               <span style={{ color: '#cc0000', fontSize: '11px', fontStyle: 'italic', fontWeight: '700' }}>Arabelle</span>
             </div>
-            {/* <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
-              <span style={{ color: '#ffd000', fontSize: '12px', fontWeight: '900' }}>小説</span>
-              <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: '900', letterSpacing: '1px' }}>菱川さかく</span>
-              <span style={{ color: '#eb6438', fontSize: '11px', fontStyle: 'italic', fontWeight: '700' }}>Sakaku Hishikawa</span>
-            </div> */}
           </div>
 
-          {/* Title */}
           <h1
             className="h-display hero__title"
             style={{
@@ -250,13 +240,11 @@ export default function Hero({
               color: '#ffffff',
               textTransform: 'uppercase',
               margin: '0 0 24px 0',
-              // textShadow: '4px 4px 0px #5f14d9, 8px 8px 0px #000000',
             }}
           >
             {title}
           </h1>
 
-          {/* Color Accent Stripe Bar */}
           <div
             style={{
               display: 'flex',
@@ -264,7 +252,6 @@ export default function Hero({
               height: '8px',
               marginBottom: '28px',
               border: '2px solid #000000',
-              // boxShadow: '3px 3px 0px #ffd000',
             }}
           >
             <div style={{ flex: 1, backgroundColor: '#bd0101' }} />
@@ -272,7 +259,6 @@ export default function Hero({
             <div style={{ flex: 1, backgroundColor: '#ffae00' }} />
           </div>
 
-          {/* Description Box */}
           <p
             className="hero__sub"
             style={{
@@ -282,16 +268,11 @@ export default function Hero({
               lineHeight: '1.65',
               maxWidth: '480px',
               marginBottom: '36px',
-              // backgroundColor: '#112c2c',
-              // padding: '18px 22px',
-              // border: '3px solid #000000',
-              // boxShadow: '6px 6px 0px #ffffff',
             }}
           >
             {subtitle}
           </p>
 
-          {/* Action Buttons */}
           <div className="hero__actions" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <a
               href={primaryCta.href}
@@ -341,12 +322,11 @@ export default function Hero({
           </div>
         </div>
 
-        {/* Terracotta/Teal Styled Turntable Frame */}
         <div
-          className="turntable is-playing"
+          className={`turntable ${isPlaying ? 'is-playing' : ''}`}
           ref={turntableRef}
           data-speed="-0.15"
-          onClick={playTurntableMusic}
+          onClick={() => toggleMusic()}
           style={{
             position: 'relative',
             width: '100%',
@@ -364,6 +344,29 @@ export default function Hero({
             justifyContent: 'center',
           }}
         >
+          <div 
+            onClick={(e) => {
+              e.stopPropagation();
+              const newUrl = prompt("Enter new YouTube URL:");
+              if (newUrl) toggleMusic(newUrl);
+            }}
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              backgroundColor: '#ffd000',
+              color: '#000',
+              padding: '4px 8px',
+              fontSize: '9px',
+              fontWeight: '900',
+              border: '2px solid #000',
+              zIndex: 10,
+              cursor: 'pointer'
+            }}
+          >
+            EDIT URL
+          </div>
+
           <div className="turntable__deck" />
           <div
             className="turntable__platter"
@@ -385,7 +388,7 @@ export default function Hero({
                 width: '45%',
                 height: '45%',
                 backgroundColor: '#fdfdfd',
-                color: '#ffffff',
+                color: '#000000',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -398,55 +401,19 @@ export default function Hero({
               }}
             >
               <span>
-                POWER & DENJI
+                {isPlaying ? 'PAUSE MUSIC' : 'PLAY MUSIC'}
                 <br />
-                JAZZING
+                {isPlaying ? '▶ ACTIVE' : '❚❚ STOPPED'}
               </span>
             </div>
-
-            {/* <div
-              className="turntable__spindle"
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: '#ffd000',
-                borderRadius: '50%',
-                position: 'absolute',
-                border: '2px solid #000000',
-              }}
-            /> */}
-
           </div>
           <div className="turntable__arm" />
         </div>
       </div>
 
-      {/* Bottom Left Novel Publisher Badge */}
-      {/* <div
-        style={{
-          position: 'absolute',
-          bottom: '20px',
-          left: '28px',
-          fontSize: '12px',
-          fontWeight: '900',
-          letterSpacing: '2px',
-          color: '#ffffff',
-          backgroundColor: '#d91424',
-          padding: '5px 12px',
-          border: '2px solid #000000',
-          boxShadow: '3px 3px 0px #ffd000',
-          zIndex: 3,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-        }}
-      >
-        <span>ABOUT</span>
-      </div> */}
-
       <div className={"hero-transition-overlay" + (isTransitioning ? ' active' : '')} />
 
-      {embedUrl && (
+      {embedUrl && isPlaying && (
         <div className="music-embed-fixed">
           <iframe
             src={embedUrl}
@@ -457,7 +424,6 @@ export default function Hero({
         </div>
       )}
 
-      {/* Scroll Down Cue Badge */}
       <div
         className="hero__scrollcue"
         style={{
