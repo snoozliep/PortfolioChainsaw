@@ -325,24 +325,12 @@ const embeddedStyles = `
 }
 `;
 
-const dataURLtoFile = (dataurl, filename) => {
-  const arr = dataurl.split(',');
-  const mime = arr[0].match(/:(.*?);/)[1];
-  const bstr = atob(arr[1]);
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
-  }
-  return new File([u8arr], filename, { type: mime });
-};
-
 export default function ContactFormCard({
   title = 'Send Us a Message',
   subtitle = 'GET IN TOUCH',
   locationText = 'Manila, Philippines',
   emailText = 'contact@domain.com',
-  endpoint = 'https://formspree.io/f/YOUR_FORM_ID',
+  endpoint = 'https://formspree.io/f/mvkpzdqz',
   onSubmitSuccess,
 }) {
   const [formData, setFormData] = useState({
@@ -443,28 +431,23 @@ export default function ContactFormCard({
     setError(null);
 
     const canvas = canvasRef.current;
+    const signatureBase64 = hasSignature ? canvas.toDataURL('image/png') : '';
 
-    const payload = new FormData();
-    payload.append('name', formData.name);
-    payload.append('email', formData.email);
-    payload.append('subject', formData.subject);
-    payload.append('message', formData.message);
-    payload.append('contractBound', isBound ? 'Yes' : 'No');
-
-    if (hasSignature && canvas) {
-      const signatureBase64 = canvas.toDataURL('image/png');
-      const signatureFile = dataURLtoFile(signatureBase64, 'signature.png');
-      payload.append('signature', signatureFile);
-    }
+    const payload = {
+      ...formData,
+      signature: signatureBase64,
+      contractBound: isBound,
+    };
 
     try {
-      if (endpoint && !endpoint.includes('YOUR_FORM_ID')) {
+      if (endpoint) {
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: {
+            'Content-Type': 'application/json',
             Accept: 'application/json',
           },
-          body: payload,
+          body: JSON.stringify(payload),
         });
 
         if (!response.ok) {
@@ -473,7 +456,7 @@ export default function ContactFormCard({
       }
 
       setSubmitted(true);
-      onSubmitSuccess?.(formData);
+      onSubmitSuccess?.(payload);
     } catch (err) {
       setError(err.message || 'An error occurred while submitting.');
     } finally {
@@ -623,6 +606,7 @@ export default function ContactFormCard({
                 CLEAR
               </button>
             </div>
+            
           </div>
         </div>
       </div>
