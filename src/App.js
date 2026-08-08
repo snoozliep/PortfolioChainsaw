@@ -6,10 +6,8 @@ import FoldersSection from './FoldersSection';
 import CyberNavbar from './components/CyberNavbar';
 import { Curtain, Hero } from './components/Parallax';
 
-// Sound effect for skull click
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
 
-// Static data defined outside render lifecycle
 const CARDS = [
   {
     title: 'Nebula Explorer',
@@ -66,7 +64,6 @@ function App() {
   const [popupFolder, setPopupFolder] = useState(null);
   const [lightPos, setLightPos] = useState({ x: 0, y: 0 });
 
-  // Memoize random bubbles to preserve positions across renders
   const bubbles = useMemo(() => 
     Array.from({ length: 20 }).map((_, i) => ({
       id: i,
@@ -78,7 +75,6 @@ function App() {
     })), 
   []);
 
-  // Throttled mouse movement tracking for smooth performance
   useEffect(() => {
     let animationFrameId = null;
 
@@ -104,15 +100,12 @@ function App() {
     setSkullClicked(prev => !prev);
     if (skullSound) {
       skullSound.currentTime = 0;
-      skullSound.play().catch(() => {
-        // Autoplay policy fallback
-      });
+      skullSound.play().catch(() => {});
     }
   }, []);
 
   return (
     <>
-      {/* Floating Smoke Background Effects */}
       <div className="bubble-container">
         {bubbles.map((bubble) => (
           <div
@@ -138,7 +131,6 @@ function App() {
         }
         style={{ position: 'relative', overflow: 'hidden' }}
       >
-        {/* Flashlight Overlay */}
         {!isLightMode && skullClicked && (
           <div
             style={{
@@ -155,7 +147,6 @@ function App() {
           />
         )}
 
-        {/* Floating Actions Controls */}
         <div
           style={{
             position: 'fixed',
@@ -205,7 +196,6 @@ function App() {
         <CyberNavbar />
         <Hero />
 
-        {/* Bento Grid Content Section */}
         <main className="about-body" id="about-me1">
           <section className="about-bento about-me" id="about-me">
             <h2 className="galaxy-header">About Me</h2>
@@ -317,7 +307,6 @@ function App() {
           </section>
         </main>
 
-        {/* Dynamic Interactive Cards Popup Grid */}
         {showAllCardsPopup && (
           <div className="card-grid">
             {CARDS.map((card, idx) => (
@@ -329,7 +318,6 @@ function App() {
           </div>
         )}
 
-        {/* Detailed Single Card Modal */}
         {popupCard && (
           <div className="card-popup-overlay" onClick={closePopup}>
             <div className={`card-popup ${popupCard.color}`} onClick={e => e.stopPropagation()}>
