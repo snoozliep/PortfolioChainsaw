@@ -77,9 +77,7 @@ const archiveItems = [
 
 const asset = (file) => process.env.PUBLIC_URL + '/' + file;
 
-function FoldersSection(props) {
-  const popupFolder = props.popupFolder ?? null;
-
+function FoldersSection({ popupFolder = null, setPopupFolder }) {
   const [note, setNote] = useState('');
   const [notesList, setNotesList] = useState([
     { id: 1, text: 'Remember to update the portfolio build!', date: 'Today' },
@@ -93,22 +91,28 @@ function FoldersSection(props) {
       if (lightbox) {
         setLightbox(null);
       } else if (popupFolder) {
-        props.setPopupFolder?.(null);
+        if (typeof setPopupFolder === 'function') {
+          setPopupFolder(null);
+        }
       }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [lightbox, popupFolder, props.setPopupFolder]);
+  }, [lightbox, popupFolder, setPopupFolder]);
 
   const openLightbox = (img, alt) => setLightbox({ src: asset(img), alt });
   const closeLightbox = () => setLightbox(null);
 
   const handleFolderClick = (folder) => {
-    props.setPopupFolder?.(folder);
+    if (typeof setPopupFolder === 'function') {
+      setPopupFolder(folder);
+    }
   };
 
   const closePopup = () => {
-    props.setPopupFolder?.(null);
+    if (typeof setPopupFolder === 'function') {
+      setPopupFolder(null);
+    }
     setLightbox(null);
   };
 
