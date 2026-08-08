@@ -201,11 +201,13 @@ function App() {
         
         <CyberNavbar />
         <Hero />
+        <div  id="about-me"></div>
         <div className="w-full min-h-screen bg-slate-900 py-10">
           <MarqueeBanner />
         </div>
+
         <main className="about-body" id="about-me1">
-          <section className="about-bento about-me" id="about-me">
+          <section className="about-bento about-me">
             <h2 className="galaxy-header">About Me</h2>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.7' }}>
               I am a Mechanical Engineering student, juggling multiple skills and hobbies to make a living while staying creative. Learn more about me from my <a href="https://azie13.carrd.co/" target="_blank" rel="noreferrer">carrd.co</a>. To check my certifications, visit my LinkedIn! My hobbies include gaming, music, art, and web development.
@@ -350,7 +352,9 @@ function App() {
 
         <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
         <FairyGalleryModal />
+        <div id="contact" className="contact-wrapper">
         <ContactFormCard />
+        </div>
 
         <footer className="galaxy-footer">
           <p>© 2025 Arabelle. All rights reserved.</p>

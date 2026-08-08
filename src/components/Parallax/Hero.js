@@ -15,7 +15,7 @@ export default function Hero({
   ),
   subtitle = "Creating designs, from websites to graphics. 3D models, schematics, prototypes, and more. All made with care, for the late hours and slow nights.",
   primaryCta = { href: '#stories', label: 'READ CASE FILES' },
-  secondaryCta = { href: '#about-me1', label: 'ABOUT ME' },
+  secondaryCta = { href: '#about-me', label: 'ABOUT ME' },
 }) {
   const turntableRef = useRef(null);
   const defaultMusicUrl = 'https://www.youtube.com/watch?v=ux3QETpLcPs&list=RDux3QETpLcPs&start_radio=1';
