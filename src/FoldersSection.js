@@ -78,8 +78,7 @@ const archiveItems = [
 const asset = (file) => process.env.PUBLIC_URL + '/' + file;
 
 function FoldersSection(props) {
-  const popupFolder = props.popupFolder !== undefined ? props.popupFolder : null;
-  const setPopupFolder = props.setPopupFolder !== undefined ? props.setPopupFolder : () => {};
+  const popupFolder = props.popupFolder ?? null;
 
   const [note, setNote] = useState('');
   const [notesList, setNotesList] = useState([
@@ -91,19 +90,25 @@ function FoldersSection(props) {
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key !== 'Escape') return;
-      if (lightbox) setLightbox(null);
-      else if (popupFolder) setPopupFolder(null);
+      if (lightbox) {
+        setLightbox(null);
+      } else if (popupFolder) {
+        props.setPopupFolder?.(null);
+      }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [lightbox, popupFolder, setPopupFolder]);
+  }, [lightbox, popupFolder, props.setPopupFolder]);
 
   const openLightbox = (img, alt) => setLightbox({ src: asset(img), alt });
   const closeLightbox = () => setLightbox(null);
 
-  const handleFolderClick = (folder) => setPopupFolder(folder);
+  const handleFolderClick = (folder) => {
+    props.setPopupFolder?.(folder);
+  };
+
   const closePopup = () => {
-    setPopupFolder(null);
+    props.setPopupFolder?.(null);
     setLightbox(null);
   };
 
