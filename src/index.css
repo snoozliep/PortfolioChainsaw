@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@theme {
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-instrument: 'Instrument Serif', serif;
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+/* Ensure the marquee container flexes smoothly */
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+/* ✅ USE THESE INSTEAD */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Marquee styles */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}

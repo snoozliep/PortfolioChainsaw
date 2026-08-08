@@ -2,9 +2,14 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import './Bubble.css';
-import FoldersSection from './FoldersSection';
+import FoldersSection from './FoldersSection.js';
 import CyberNavbar from './components/CyberNavbar';
 import { Curtain, Hero } from './components/Parallax';
+import { MarqueeBanner } from './components/MarqueeBanner.jsx';
+import { FairyGalleryModal } from './components/FairyGalleryModal.jsx';
+import { ContactFormCard } from './components/ContactFormCard.jsx';
+
+
 
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
 
@@ -193,9 +198,12 @@ function App() {
         </div>
 
         <Curtain />
+        
         <CyberNavbar />
         <Hero />
-
+        <div className="w-full min-h-screen bg-slate-900 py-10">
+          <MarqueeBanner />
+        </div>
         <main className="about-body" id="about-me1">
           <section className="about-bento about-me" id="about-me">
             <h2 className="galaxy-header">About Me</h2>
@@ -336,7 +344,13 @@ function App() {
           </div>
         )}
 
+        <div className="w-full min-h-screen bg-slate-900 py-10" style={{ transform: 'rotate(2deg)' }}>
+          <MarqueeBanner />
+        </div>
+
         <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
+        <FairyGalleryModal />
+        <ContactFormCard />
 
         <footer className="galaxy-footer">
           <p>© 2025 Arabelle. All rights reserved.</p>

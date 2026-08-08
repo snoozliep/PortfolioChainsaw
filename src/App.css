@@ -2,6 +2,70 @@
    IMPORTS & CORE SETTINGS
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Playfair+Display:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: fadeInUp linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+/* Enable smooth scrolling across the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animated wrappers for smooth GPU rendering */
+main.about-body > div,
+.fade-in-section,
+.w-full {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Ensure no unintended horizontal scrollbars appear during slide-up animations */
+body, 
+#root {
+  overflow-x: hidden;
+}
+
+/* Optional: Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 :root {
   --font-main: 'Segoe UI', Arial, Helvetica, sans-serif;
