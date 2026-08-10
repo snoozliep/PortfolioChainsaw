@@ -18,7 +18,7 @@
   --orange: #f7c873;
   --red: #e63900;
   --ink: #222222;
-  --paper: #ffffff;
+  --paper: #a8a1a1;
 
   --radius-lg: 18px;
   --radius-md: 12px;
@@ -776,10 +776,10 @@
   width: 100%;
   max-width: 800px;
   max-height: 85vh;
-  background: #ffffff;
+  background: #161616a9;
   border: 3px solid var(--folder-color, #333);
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.35);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -789,7 +789,7 @@
 .folder-popup-title {
   margin: 0;
   padding: 1.25rem 1.5rem;
-  background: var(--folder-color, #333);
+  background: var(--folder-color, #0F3040);
   color: #ffffff;
   font-size: 1.4rem;
   letter-spacing: 0.5px;
@@ -799,7 +799,7 @@
   position: absolute;
   top: 0.8rem;
   right: 1rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(5, 5, 5, 0.685);
   border: none;
   color: #ffffff;
   font-size: 1.8rem;
@@ -1236,7 +1236,7 @@
 }
 
 .archive-card {
-  background: #ffffff;
+  background: #0f0f0f;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
@@ -1306,7 +1306,7 @@
 .archive-title {
   margin: 0;
   font-size: 0.95rem;
-  color: #0f172a;
+  color: #f4f5f7;
 }
 
 .archive-launch-btn {

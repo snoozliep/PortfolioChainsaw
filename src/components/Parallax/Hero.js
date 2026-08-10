@@ -94,16 +94,14 @@ export default function Hero({
     ScrollTrigger.create({
       trigger: root,
       start: 'bottom 70%',
-      onLeave: () => turntableRef.current?.classList.remove('is-playing'),
-      onEnterBack: () => turntableRef.current?.classList.add('is-playing'),
+      onLeave: () => {
+        if (isPlaying) turntableRef.current?.classList.remove('is-playing');
+      },
+      onEnterBack: () => {
+        if (isPlaying) turntableRef.current?.classList.add('is-playing');
+      },
     });
-  }, []);
-
-  useEffect(() => {
-    const play = () => turntableRef.current?.classList.add('is-playing');
-    window.addEventListener('nocturne:curtain-open', play);
-    return () => window.removeEventListener('nocturne:curtain-open', play);
-  }, []);
+  }, [isPlaying]);
 
   return (
     <header

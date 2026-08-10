@@ -9,8 +9,6 @@ import { MarqueeBanner } from './components/MarqueeBanner.jsx';
 import { FairyGalleryModal } from './components/FairyGalleryModal.jsx';
 import { ContactFormCard } from './components/ContactFormCard.jsx';
 
-
-
 const skullSound = typeof window !== 'undefined' ? new Audio('skull.ogg') : null;
 
 const CARDS = [
@@ -67,7 +65,6 @@ function App() {
   const [popupCard, setPopupCard] = useState(null);
   const [showAllCardsPopup] = useState(false);
   const [popupFolder, setPopupFolder] = useState(null);
-  const [lightPos, setLightPos] = useState({ x: 0, y: 0 });
 
   const bubbles = useMemo(() => 
     Array.from({ length: 20 }).map((_, i) => ({
@@ -86,12 +83,13 @@ function App() {
     const handleMouseMove = (e) => {
       if (animationFrameId) return;
       animationFrameId = requestAnimationFrame(() => {
-        setLightPos({ x: e.clientX, y: e.clientY });
+        document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--y', `${e.clientY}px`);
         animationFrameId = null;
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -137,22 +135,11 @@ function App() {
         style={{ position: 'relative', overflow: 'hidden' }}
       >
         {!isLightMode && skullClicked && (
-          <div
-            style={{
-              pointerEvents: 'none',
-              position: 'fixed',
-              left: 0,
-              top: 0,
-              width: '100vw',
-              height: '100vh',
-              zIndex: 10000,
-              background: `radial-gradient(circle 180px at ${lightPos.x}px ${lightPos.y}px, rgba(0,0,0,0) 0%, rgba(0,0,0,0.92) 100%)`,
-              transition: 'background 0.08s',
-            }}
-          />
+          <div className="flashlight-overlay" />
         )}
 
         <div
+          className="control-dock"
           style={{
             position: 'fixed',
             right: 24,
@@ -165,13 +152,13 @@ function App() {
         >
           <button
             type="button"
+            className="skull-toggle"
             aria-label="Toggle flashlight effect"
             style={{
               background: 'none',
               border: 'none',
               fontSize: '2.2rem',
               cursor: 'pointer',
-              transition: 'transform 0.15s',
               userSelect: 'none',
               padding: 0
             }}
@@ -181,6 +168,7 @@ function App() {
           </button>
           <button
             type="button"
+            className="theme-toggle"
             style={{
               padding: '10px 18px',
               borderRadius: '8px',
@@ -201,30 +189,31 @@ function App() {
         
         <CyberNavbar />
         <Hero />
-        <div  id="about-me"></div>
+        <div id="about-me"></div>
         <div className="w-full min-h-screen bg-slate-900 py-10">
           <MarqueeBanner />
         </div>
 
         <main className="about-body" id="about-me1">
-          <section className="about-bento about-me">
+          <section className="about-bento about-me scroll-reveal" style={{ '--reveal-delay': '0s' }}>
             <h2 className="galaxy-header">About Me</h2>
             <p style={{ fontSize: '0.92rem', lineHeight: '1.7' }}>
               I am a Mechanical Engineering student, juggling multiple skills and hobbies to make a living while staying creative. Learn more about me from my <a href="https://azie13.carrd.co/" target="_blank" rel="noreferrer">carrd.co</a>. To check my certifications, visit my LinkedIn! My hobbies include gaming, music, art, and web development.
             </p>
           </section>
 
-          <section className="about-bento skills">
+          <section className="about-bento skills scroll-reveal" style={{ '--reveal-delay': '0.1s' }}>
             <h2 className="galaxy-header">Skills & Interests</h2>
             <ul>
-              <li>🌌 Space Enthusiast</li>
-              <li>💻 Web Developer</li>
-              <li>🎨 Creative Designer</li>
-              <li>🚀 Lifelong Learner</li>
+              {['🌌 Space Enthusiast', '💻 Web Developer', '🎨 Creative Designer', '🚀 Lifelong Learner'].map((item, idx) => (
+                <li key={item} className="stagger-item" style={{ '--stagger-delay': `${0.15 + idx * 0.08}s` }}>
+                  {item}
+                </li>
+              ))}
             </ul>
           </section>
 
-          <section className="about-bento projects">
+          <section className="about-bento projects scroll-reveal" style={{ '--reveal-delay': '0.15s' }}>
             <h2 className="galaxy-header">Activities & Societies</h2>
             <ul style={{
               listStyle: 'none',
@@ -235,7 +224,7 @@ function App() {
               fontSize: '0.85rem',
             }}>
               {ACTIVITIES.map((item, idx) => (
-                <li key={idx} style={{
+                <li key={idx} className="stagger-item" style={{
                   display: 'flex',
                   alignItems: 'center',
                   marginBottom: '.18rem',
@@ -244,7 +233,8 @@ function App() {
                   padding: '0.08rem 0.18rem',
                   borderRadius: '12px',
                   fontWeight: 500,
-                  letterSpacing: '0.05em'
+                  letterSpacing: '0.05em',
+                  '--stagger-delay': `${idx * 0.07}s`
                 }}>
                   <span style={{ marginRight: '6px', fontSize: '1.1em' }}>{item.icon}</span>
                   {item.name}
@@ -253,7 +243,7 @@ function App() {
             </ul>
           </section>
 
-          <section className="about-bento contact">
+          <section className="about-bento contact scroll-reveal" style={{ '--reveal-delay': '0.2s' }}>
             <h2 className="galaxy-header">Contact & Works</h2>
             <div style={{ display: 'flex', flexDirection: 'row', gap: '0px', justifyContent: 'center', alignItems: 'center', marginTop: '8px', width: '100%' }}>
               <ul className="actions prettier-actions" style={{ flex: 1, textAlign: 'center', margin: 0 }}>
@@ -303,7 +293,7 @@ function App() {
             </div>
           </section>
 
-          <section className="about-bento extra">
+          <section className="about-bento extra scroll-reveal" style={{ '--reveal-delay': '0.25s' }}>
             <div className="info-card education-card">
               <h2 className="galaxy-header">Education</h2>
               <div className="info-card-title">🎓 Mapúa University</div>
@@ -320,7 +310,7 @@ function App() {
         {showAllCardsPopup && (
           <div className="card-grid">
             {CARDS.map((card, idx) => (
-              <div key={idx} className={`galaxy-card ${card.color}`} style={{ cursor: 'pointer' }} onClick={() => setPopupCard(card)}>
+              <div key={idx} className={`galaxy-card ${card.color} pop-item`} style={{ cursor: 'pointer', '--stagger-delay': `${idx * 0.08}s` }} onClick={() => setPopupCard(card)}>
                 <h2 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '8px' }}>{card.title}</h2>
                 <p style={{ fontSize: '0.98rem', color: '#e0e0ff', marginBottom: '8px' }}>{card.description}</p>
               </div>
@@ -335,10 +325,10 @@ function App() {
               <h2>{popupCard.title}</h2>
               <p>{popupCard.description}</p>
               {popupCard.image && (
-                <img src={popupCard.image} alt={popupCard.title} style={{ maxWidth: '100%', borderRadius: '8px', margin: '18px 0' }} />
+                <img src={popupCard.image} alt={popupCard.title} className="card-popup-image" style={{ maxWidth: '100%', borderRadius: '8px', margin: '18px 0' }} />
               )}
               {popupCard.extra && (
-                <div style={{ marginTop: '10px', fontSize: '1.08rem', color: '#e0e0ff' }}>
+                <div className="card-popup-extra" style={{ marginTop: '10px', fontSize: '1.08rem', color: '#e0e0ff' }}>
                   {popupCard.extra}
                 </div>
               )}
@@ -353,10 +343,10 @@ function App() {
         <FoldersSection popupFolder={popupFolder} setPopupFolder={setPopupFolder} />
         <FairyGalleryModal />
         <div id="contact" className="contact-wrapper">
-        <ContactFormCard />
+          <ContactFormCard />
         </div>
 
-        <footer className="galaxy-footer">
+        <footer className="galaxy-footer scroll-reveal">
           <p>© 2025 Arabelle. All rights reserved.</p>
         </footer>
         <Analytics />

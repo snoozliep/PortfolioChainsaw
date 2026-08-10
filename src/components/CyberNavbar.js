@@ -10,21 +10,34 @@ const CyberNavbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 1. Force "home" active state when at or near the very top of the page
+      // Force "home" active state when near the top of the page
       if (window.scrollY < 150) {
         setActiveSection('home');
         return;
       }
 
       const sectionIds = ['home', 'about-me', 'contact'];
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const viewportMid = window.innerHeight / 2;
 
       for (const id of sectionIds) {
         const element = document.getElementById(id);
         if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          // Determine section boundaries either by element bounding rectangle or container height
+          const rect = element.getBoundingClientRect();
+          
+          // If element has zero height (like empty anchor divs), check the distance to its next sibling section
+          let height = rect.height;
+          if (height === 0) {
+            const parent = element.parentElement;
+            const aboutSection = document.getElementById('about-me1') || parent;
+            if (aboutSection) {
+              const targetRect = aboutSection.getBoundingClientRect();
+              if (targetRect.top <= viewportMid && targetRect.bottom >= viewportMid) {
+                setActiveSection('about-me');
+                break;
+              }
+            }
+          } else if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
             setActiveSection(id);
             break;
           }
@@ -33,7 +46,7 @@ const CyberNavbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Trigger initial check on load
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -119,17 +132,19 @@ const CyberNavbar = () => {
           color: var(--chip3);
         }
 
-        /* 2. Arrow indicator attached exclusively to active link */
         .cyber-nav a::before {
           content: '>';
           margin-right: 6px;
           color: var(--chip1);
           opacity: 0;
-          transition: opacity 0.2s ease;
+          display: inline-block;
+          transform: translateX(-6px);
+          transition: opacity 0.25s ease, transform 0.25s ease;
         }
 
         .cyber-nav a.active::before {
           opacity: 1;
+          transform: translateX(0);
         }
       `}</style>
 
@@ -165,9 +180,8 @@ const CyberNavbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   setActiveSection('about-me');
-                  document
-                    .getElementById('about-me')
-                    ?.scrollIntoView({ behavior: 'smooth' });
+                  const el = document.getElementById('about-me1') || document.getElementById('about-me');
+                  el?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 About
