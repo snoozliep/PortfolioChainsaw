@@ -1,5 +1,4 @@
-// import React, { useRef, useState } from 'react';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGsapScope, initParallax } from './useScrollFx';
 
